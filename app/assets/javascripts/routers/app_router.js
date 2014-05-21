@@ -22,5 +22,4 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     this.currentView = view;
     this.$rootEl.html(this.currentView.render().$el);
   }
-
 });

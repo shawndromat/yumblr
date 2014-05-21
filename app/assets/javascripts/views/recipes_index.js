@@ -2,8 +2,8 @@ window.Yumblr.Views.RecipesIndex = Backbone.View.extend({
   initialize: function () {
     this.listenTo(this.collection, 'sync', this.render)
   },
-  tagName: "ul",
-  className: "row recipes",
+  tagName: "div",
+  className: "row",
   template: JST["recipes_index"],
   render: function () {
     var content = this.template({recipes: this.collection});

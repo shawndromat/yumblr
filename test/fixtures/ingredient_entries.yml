@@ -1,11 +1,16 @@
 # == Schema Information
 #
-# Table name: ingredients
+# Table name: ingredient_entries
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)      not null
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  amount        :integer
+#  unit          :string(255)
+#  recipe_id     :integer          not null
+#  ingredient_id :integer          not null
+#  created_at    :datetime
+#  updated_at    :datetime
+#  numerator     :integer
+#  denominator   :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

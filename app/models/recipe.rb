@@ -15,4 +15,6 @@ class Recipe < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
 
   has_many :steps
+  has_many :ingredient_entries
+  has_many :ingredients, through: :ingredient_entries, source: :ingredient
 end

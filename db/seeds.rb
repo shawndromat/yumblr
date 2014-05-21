@@ -25,3 +25,26 @@ pbj1 = Step.create(
   recipe_id: pbj.id,
   rank: 3
 )
+pb = Ingredient.create(name: "peanut butter");
+j = Ingredient.create(name: "strawberry jelly");
+bread = Ingredient.create(name: "bread");
+pbj_ing_1 = IngredientEntry.create(
+  amount: 2,
+  unit: "tablespoon",
+  ingredient_id: pb.id,
+  recipe_id: pbj.id
+)
+pbj_ing_2 = IngredientEntry.create(
+  numerator: 1,
+  denominator: 8,
+  unit: "cup",
+  ingredient_id: j.id,
+  recipe_id: pbj.id
+)
+
+pbj_ing_3 = IngredientEntry.create(
+  amount: 2,
+  unit: "slice",
+  ingredient_id: bread.id,
+  recipe_id: pbj.id
+)

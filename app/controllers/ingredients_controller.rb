@@ -1,5 +1,7 @@
-class IngredientsController < ApplicationController
-  def index
-    @ingredients = Ingredient.all
-  end
-end
+# module Api
+#   class IngredientsController < ApiController
+#     def index
+#       @ingredients = Ingredient.all
+#     end
+#   end
+# end

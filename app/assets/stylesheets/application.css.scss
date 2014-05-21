@@ -11,3 +11,16 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+.recipes {
+  width: 600px;
+
+  .index-card {
+    width: 300px;
+    box-sizing: border-box;
+    list-style: none;
+  }
+  .recipe-img{}
+}

@@ -2,11 +2,30 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
-shawna = User.create(email: "shawna@yumblr.io")
-shawna.save!(:validate => false)
+shawna = User.find_by_email("shawna@yumblr.io")
+
+
+
+unless shawna
+  shawna = User.create(email: "shawna@yumblr.io")
+  shawna.save!(:validate => false)
+end
+
 pbj = Recipe.create(
   title: "PB & J",
   photo_url: "http://cquick.agblogger.org/wp-content/blogs.dir/16/files//2008/04/pbj.jpg",
+  owner: shawna
+)
+
+quiche = Recipe.create(
+  title: "Quiche Lorraine",
+  photo_url: "http://www.simplyrecipes.com/wp-content/uploads/2010/05/quiche-lorraine.jpg",
+  owner: shawna
+)
+
+fritters = Recipe.create(
+  title: "Broccoli Parmesan Fritters",
+  photo_url: "http://lh4.ggpht.com/32DL3GiVEAPr2HfpVaasvm18wuuYbLNVYr_Eh9r-ke73GY-lSSvYvtFWQiWy83Cz6wwNMbWdoyOxCYa_GGIxJA=s730",
   owner: shawna
 )
 

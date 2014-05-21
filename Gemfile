@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'pry-rails'
 gem 'backbone-on-rails'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 group :development do
   gem 'annotate'

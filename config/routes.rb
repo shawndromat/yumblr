@@ -1,6 +1,8 @@
 Yumblr::Application.routes.draw do
   devise_for :users
-  resources :recipes
-  resources :ingredients, only: [:index]
-  root to: "recipes#index"
+  namespace :api, defaults: { format: :json } do
+    resources :recipes
+    resources :ingredients, only: [:index]
+  end
+  root to: "static_pages#root"
 end

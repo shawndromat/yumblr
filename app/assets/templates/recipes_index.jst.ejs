@@ -1,0 +1,8 @@
+<% recipes.each(function (recipe) { %>
+  <li class="index-card">
+    <%= recipe.escape('title') %>
+    <img class="recipe-img"
+          src="<%= recipe.escape('photo_url') %>"
+          alt="<%= recipe.escape('title') %>" />
+  </li>
+<% }) %>

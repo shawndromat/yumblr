@@ -8,4 +8,20 @@ pbj = Recipe.create(
   title: "PB & J",
   photo_url: "http://cquick.agblogger.org/wp-content/blogs.dir/16/files//2008/04/pbj.jpg",
   owner: shawna
-);
+)
+
+pbj1 = Step.create(
+  body: "Spread peanut butter on one slice of bread",
+  recipe_id: pbj.id,
+  rank: 1
+)
+pbj1 = Step.create(
+  body: "Spread jelly on the other slice of bread",
+  recipe_id: pbj.id,
+  rank: 2
+)
+pbj1 = Step.create(
+  body: "Put the two slices of bread together and enjoy!",
+  recipe_id: pbj.id,
+  rank: 3
+)

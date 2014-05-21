@@ -1,10 +1,6 @@
 class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
-    # respond_to do |format|
-    #   format.html
-    #   format.json { }
-    # end
     render json: @recipes
   end
 
@@ -19,7 +15,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    render json: @recipe
+    render partial: "api/recipes/recipe", locals: { recipe: @recipe }
   end
 
   def update

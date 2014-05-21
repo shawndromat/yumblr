@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: steps
-#
-#  id         :integer          not null, primary key
-#  body       :text             not null
-#  recipe_id  :integer          not null
-#  rank       :integer          not null
-#  created_at :datetime
-#  updated_at :datetime
-#
-
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 # This model initially had no columns defined.  If you add columns to the

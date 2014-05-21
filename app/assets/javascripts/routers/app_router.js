@@ -15,6 +15,15 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     });
     this._swapView(indexView);
   },
+  recipeShow: function (id) {
+    var recipe = Yumblr.recipes.getOrFetch(id);
+    var showView = new Yumblr.Views.RecipeShow({
+      model: recipe
+    });
+    recipe.fetch();
+    //fetch its subview data too
+    this._swapView(showView);
+  },
   _swapView: function (view) {
     if (this.currentView) {
       this.currentView.leave();

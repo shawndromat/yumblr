@@ -1,14 +1,16 @@
 <div class="col-md-10 col-md-offset-1">
-  <div class="recipes">
+  <div class="recipes-index">
       <% recipes.each(function (recipe) { %>
-        <div class="index-card">
-          <div class="title-card">
-            <%= recipe.escape('title') %>
+        <a class="recipe-link" href="#recipes/<%= recipe.escape('id') %>">
+          <div class="index-card">
+            <div class="title-card">
+              <%= recipe.escape('title') %>
+            </div>
+            <img class="recipe-img"
+                  src="<%= recipe.escape('photo_url') %>"
+                  alt="<%= recipe.escape('title') %>" />
           </div>
-          <img class="recipe-img"
-                src="<%= recipe.escape('photo_url') %>"
-                alt="<%= recipe.escape('title') %>" />
-        </div>
+        </a>
       <% }) %>
   </div>
 </div>

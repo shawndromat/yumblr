@@ -22,21 +22,21 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var steps = formData["steps"];
     console.log(attrs);
     console.log(steps);
-    // this.model.set(attrs);
-    //
-    // function success (model) {
-    //   Backbone.history.navigate("recipes/" + model.id, {trigger: true})
-    // }
-    //
-    // if (this.model.isNew()) {
-    //   this.collection.create(this.model, {
-    //     success: success
-    //   });
-    // } else {
-    //   this.model.save({}, {
-    //     success: success
-    //   });
-    // }
+    this.model.set(attrs);
+
+    function success (model) {
+      Backbone.history.navigate("recipes/" + model.id, {trigger: true})
+    }
+
+    if (this.model.isNew()) {
+      this.collection.create(this.model, {
+        success: success
+      });
+    } else {
+      this.model.save({}, {
+        success: success
+      });
+    }
   },
   addStep: function () {
     var step = new Yumblr.Models.Step();

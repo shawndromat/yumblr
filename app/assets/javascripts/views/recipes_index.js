@@ -12,8 +12,5 @@ window.Yumblr.Views.RecipesIndex = Backbone.View.extend({
     var content = this.template({recipes: this.collection});
     this.$el.html(content);
     return this;
-  },
-  leave: function () {
-    this.remove();
   }
 });

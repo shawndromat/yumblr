@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
   validates :title, :owner, presence: true
   belongs_to :owner, class_name: "User"
 
-  has_many :steps
+  has_many :steps, inverse_of: :recipe
   has_many :ingredient_entries
   has_many :ingredients, through: :ingredient_entries, source: :ingredient
 end

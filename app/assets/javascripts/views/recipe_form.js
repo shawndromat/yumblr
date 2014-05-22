@@ -20,27 +20,28 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var formData = $(event.target).serializeJSON();
     var attrs = formData["recipe"];
     var steps = formData["steps"];
-    console.log(attrs);
-    console.log(steps);
-    this.model.set(attrs);
+    // this.model.set(attrs);
 
     function success (model) {
       Backbone.history.navigate("recipes/" + model.id, {trigger: true})
+      if (model.isNew()) {
+        Yumblr.recipes.add(model)
+      }
     }
 
-    if (this.model.isNew()) {
-      this.collection.create(this.model, {
-        success: success
-      });
-    } else {
-      this.model.save({}, {
-        success: success
-      });
-    }
+    this.model.save({recipe: attrs, steps: steps}, {
+      success: success
+    })
   },
   addStep: function () {
     var step = new Yumblr.Models.Step();
+    if (this.subviews()["#steps-forms"]) {
+      step.set("rank", this.subviews()["#steps-forms"].length + 1)
+    } else {
+      step.set("rank", 1);
+    }
     var stepForm = new Yumblr.Views.StepForm({model: step});
     this.addSubview("#steps-forms", stepForm);
+    // step.set('rank', this.subviews()["#steps-forms"].length + 1);
   }
 });

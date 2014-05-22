@@ -8,6 +8,9 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     // });
   },
   template: JST["recipes/recipe_show"],
+  events: {
+    'click .edit-recipe': 'edit'
+  },
   render: function () {
     var content = this.template({recipe: this.model});
     this.$el.html(content);
@@ -17,5 +20,8 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   addStep: function (step) {
     var stepShow = new Yumblr.Views.StepShow({model: step});
     this.addSubview("#recipe-steps", stepShow);
+  },
+  edit: function () {
+    Backbone.history.navigate("#recipes/" + this.model.id + "/edit", {trigger: true} );
   }
 });

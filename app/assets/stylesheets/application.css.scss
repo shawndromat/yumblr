@@ -51,9 +51,18 @@
 }
 
 ol, ol li{
-
   input {
     margin-top: -20px;
     margin-bottom: 20px
+  }
+}
+
+.recipe-header {
+  h2 {
+    display: inline-block;
+  }
+
+  .edit-recipe {
+    margin: 0 0 10px 10px;
   }
 }

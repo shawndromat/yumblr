@@ -4,7 +4,7 @@ window.Yumblr.Views.RecipesIndex = Backbone.View.extend({
   },
   tagName: "div",
   className: "row",
-  template: JST["recipes_index"],
+  template: JST["recipes/recipes_index"],
   // events: {
   //   'click .index-card': 'navShow',
   // },

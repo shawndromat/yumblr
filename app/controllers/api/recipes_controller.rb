@@ -9,7 +9,8 @@ module Api
     end
 
     def create
-      @recipe = Recipe.new(recipe_params)
+      p recipe_params
+      @recipe = current_user.owned_recipes.new(recipe_params)
       if @recipe.save
         render json: @recipe
       else
@@ -33,7 +34,7 @@ module Api
 
     private
     def recipe_params
-      require(:recipe).permit(:title, :owner_id, :photo_url)
+      params.require(:recipe).permit(:title, :photo_url)
     end
   end
 end

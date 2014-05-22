@@ -23,5 +23,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :owned_recipes, class_name: "Recipe", foreign_key: :user_id
+  has_many :owned_recipes, class_name: "Recipe", foreign_key: :owner_id
 end

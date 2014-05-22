@@ -1,10 +1,10 @@
 Yumblr.Routers.AppRouter = Backbone.Router.extend({
   initialize: function (options) {
-    this.$rootEl = options.$rootEl
+    this.$rootEl = options.$rootEl;
   },
   routes: {
     "": "recipeIndex",
-    "recipes/new": "recipeShow",
+    "recipes/new": "recipeNew",
     "recipes/:id/edit": "recipeEdit",
     "recipes/:id": "recipeShow"
   },
@@ -20,9 +20,23 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     var showView = new Yumblr.Views.RecipeShow({
       model: recipe
     });
-    recipe.fetch();
-    //fetch its subview data too
     this._swapView(showView);
+  },
+  recipeNew: function () {
+    var newRecipe = new Yumblr.Models.Recipe();
+    var formView = new Yumblr.Views.RecipeForm({
+      model: newRecipe,
+      collection: Yumblr.recipes
+    });
+    this._swapView(formView);
+  },
+  recipeEdit: function (id) {
+    var recipe = Yumblr.recipes.getOrFetch(id);
+    var formView = new Yumblr.Views.RecipeForm({
+      model: recipe,
+      collection: Yumblr.recipes
+    });
+    this._swapView(formView);
   },
   _swapView: function (view) {
     if (this.currentView) {

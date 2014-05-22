@@ -9,8 +9,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Profile</a></li>
-        <li><%= link_to "Sign In", new_user_session_url %></li>
-        <li><%= link_to "Sign Up", new_user_registration_url %></li>
+
+        <% if current_user %>
+          <li><p class="navbar-text">You are signed in as <%= current_user.email %></p></li>
+          <li>
+            <%= button_to "Log Out", destroy_user_session_url, class: "btn btn-default navbar-btn pull-right" %>
+          </li>
+        <% else %>
+          <li><%= link_to "Sign In", new_user_session_url %></li>
+          <li><%= link_to "Sign Up", new_user_registration_url %></li>
+        <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

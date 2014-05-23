@@ -16,6 +16,7 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
   },
   editStep: function (event) {
     this.$(".step-body").html("<textarea class='step-form editable form-control'>" + this.model.escape("body") + "</textarea>");
+    this.$(".step-form").focus();
   },
   saveStep: function (event) {
     var body = $(event.target).val();

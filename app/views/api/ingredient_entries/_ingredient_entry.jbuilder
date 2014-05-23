@@ -1,4 +1,4 @@
-json.extract! entry, :amount, :unit
+json.extract! entry, :id, :amount, :unit
 
 json.fraction entry.translate_fraction
 

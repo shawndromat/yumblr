@@ -1,5 +1,5 @@
 <div class="recipe-header row">
-  <div class="col-lg-10 col-lg-offset-1">
+  <div class="col-lg-12">
     <div class="editable">
       <h2 class="recipe-title"><%= recipe.escape('title') %></h2>
       <div type="button" class="edit-title edit-button">
@@ -10,14 +10,16 @@
 </div>
 
 <div class="recipe-body row">
-  <div class="col-lg-4 col-lg-offset-1">
+  <div class="col-lg-4 img-col">
     <div id="recipe-show-img">
       <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive editable" />
     </div>
-
-    <div id="ingredient-entries" class="editable"></div>
   </div>
-  <div class="col-lg-6">
+
+  <div class="col-lg-8">
+    <h3>Ingredients</h3>
+      <div id="ingredient-entries"></div>
+    <h3>Directions</h3>
     <div id="recipe-steps"></div>
   </div>
 </div>

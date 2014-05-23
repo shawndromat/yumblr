@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.datepicker
  *= require_tree .
  */
 
@@ -87,12 +88,18 @@ ol, ol li{
     margin-top: 5px;
   }
 
+  .recipe-title .form-control {
+    height: 50px;
+    font-size: 1em;
+  }
+
   .edit-recipe {
     margin: 0 0 10px 10px;
   }
 }
 
-.recipe-step {
+.recipe-body {
+  margin-top: 30px;
 
   p  {
     padding: 10px 0;
@@ -105,6 +112,34 @@ ol, ol li{
   padding: 0;
 }
 
-.step-form textarea {
-  font-size: 1.5em;
+.step-form {
+  font-size: 1.25em;
+}
+
+.edit-entry {
+  margin-left: 10px;
+}
+
+.img-placeholder {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-color: #ccc;
+  text-align: center;
+
+  p {
+    margin-top: 120px;
+    color: #fff;
+    font-size: 1.5em;
+  }
+}
+
+.title-form {
+  min-width: 100px;
+}
+
+.add-item {
+  text-align: center;
+  font-size: 50px;
+  color: #999;
 }

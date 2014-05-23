@@ -4,9 +4,15 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.steps(), "add", this.addStep);
     this.listenTo(this.model.steps(), "sync change", this.render);
+    this.listenTo(this.model.entries(), "add", this.addEntry);
+    this.listenTo(this.model.entries(), "sync change", this.render);
+
     var view = this;
-    this.model.steps().each(function (step) {
-      this.addStep.bind(view, step);
+    this.model.steps().each( function (step) {
+      view.addStep.bind(view, step)
+    });
+    this.model.entries().each( function (entry) {
+      view.addEntry.bind(view, entry)
     });
   },
   template: JST["recipes/recipe_show"],
@@ -25,11 +31,17 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     var stepShow = new Yumblr.Views.StepShow({model: step});
     this.addSubview("#recipe-steps", stepShow);
   },
+  addEntry: function (entry) {
+    var entryShow = new Yumblr.Views.IngredientEntryShow({model: entry});
+    this.addSubview("#ingredient-entries", entryShow);
+  },
   editTitle: function () {
-    $('.recipe-title').html("<input class='title-form editable' value='" + this.model.escape('title') + "'></input>")
+    var titleForm = JST["recipes/title_form"]
+    var title = titleForm({recipe: this.model})
+    $('.recipe-title').html(title);
+    this.$('.title-form').focus();
   },
   saveTitle: function (event) {
-    console.log("saved");
     var title = $(event.target).val();
     this.model.save({title: title});
   },

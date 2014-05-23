@@ -1,9 +1,10 @@
 window.Yumblr.Views.IngredientEntryForm = Backbone.View.extend({
-  className: "row entry-form",
+  className: "row",
   template: JST["ingredient_entries/ingredient_entry_form"],
   render: function () {
     var content = this.template({entry: this.model});
     this.$el.html(content);
+    this.$('.fraction-select').attr("selectedIndex", -1);
     return this;
   }
 });

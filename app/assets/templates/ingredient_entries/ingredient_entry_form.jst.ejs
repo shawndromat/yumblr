@@ -1,14 +1,15 @@
-<div class="col-md-2">
-  <input name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][rank]"
-       type="hidden" value="<%= entry.escape('rank') %>">
-    <input class="form-control"
-         name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][amount]"
-         type="number" min="0" max="1000" value="0">
+<div class="col-md-2 entry-form">
+  <input class="entry-rank"
+         name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][rank]"
+         type="hidden" value="<%= entry.escape('rank') %>">
+  <input class="form-control entry-amount"
+       name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][amount]"
+       type="number" min="0" max="1000" value="<%= entry.escape('amount') %>">
 </div>
 <div class="col-md-2">
-  <select class="form-control"
+  <select class="form-control fraction-select"
           name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][fraction]">
-    <option>--</option>
+    <option></option>
     <option>1/8</option>
     <option>1/4</option>
     <option>1/3</option>
@@ -22,9 +23,10 @@
 </div>
 
 <div class="col-md-2">
-  <select class="form-control"
+  <select class="form-control unit-select"
           name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][unit]">
-    <option>cup</option>
+    <option></option>
+    <option selected>cup</option>
     <option>tbsp</option>
     <option>tsp</option>
     <option>lb</option>
@@ -49,6 +51,7 @@
 
 <div class="col-md-6">
   <input placeholder="ingredient"
-         class="form-control"
-         name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][ingredient_name]">
+         class="form-control entry-ingredient"
+         name="recipe[ingredient_entries_attributes][<%= entry.escape('rank') %>][ingredient_name]"
+         value="<%= entry.escape('ingredient') %>">
 </div>

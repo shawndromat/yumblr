@@ -18,8 +18,9 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     setTimeout(function () {
       $('.title-input').focus().val("Recipe Title");
     }, 100);
-    this.$('#recipe-steps').sortable();
-    this.$('#ingredient-entries').sortable();
+    // later feature
+    // this.$('#recipe-steps').sortable();
+    // this.$('#ingredient-entries').sortable();
     return this;
   },
   addStepForm: function () {

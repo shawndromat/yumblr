@@ -45,6 +45,7 @@ class IngredientEntry < ActiveRecord::Base
     ]
 
   FRACTIONS = [
+      "",
       "1/8",
       "1/4",
       "1/3",

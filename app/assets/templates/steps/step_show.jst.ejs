@@ -1,1 +1,9 @@
-<li class="recipe-step"><%= step.escape("body") %></li>
+<div class="col-md-1"><p><%= step.escape('rank') %>.</p></div>
+  <span class="editable">
+    <div class="col-md-9 step-body"><p><%= step.escape("body") %></p></div>
+    <div class="col-md-2 step-buttons">
+      <div type="button" class="edit-step edit-button">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </div>
+    </div>
+</span>

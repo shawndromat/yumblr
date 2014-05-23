@@ -57,12 +57,54 @@ ol, ol li{
   }
 }
 
+.edit-button {
+  display: none;
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 5px;
+  position: relative;
+
+  .glyphicon-pencil {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: white;
+  }
+}
+
+.editable:hover .edit-button {
+  display: inline-block;
+}
+
 .recipe-header {
   h2 {
     display: inline-block;
   }
 
+  .edit-button {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
   .edit-recipe {
     margin: 0 0 10px 10px;
   }
+}
+
+.recipe-step {
+
+  p  {
+    padding: 10px 0;
+    font-size: 1.5em;
+    display: inline-block;
+  }
+}
+
+.step-buttons {
+  padding: 0;
+}
+
+.step-form textarea {
+  font-size: 1.5em;
 }

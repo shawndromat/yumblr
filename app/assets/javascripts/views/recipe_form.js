@@ -1,12 +1,17 @@
 window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, 'sync', this.render);
-
-    _(3).times(this.addStep.bind(this))
+    this.listenTo(this.model.steps(), 'change', this.render);
+    if (this.model.steps().length > 0) {
+      this.model.steps().each(this.addStep.bind(this));
+    } else {
+      this.stepSetup();
+    }
   },
   className: "row col-lg-8 col-lg-offset-2",
   template: JST["recipes/recipe_form"],
   events: {
+    "blur #recipe-title": "submitRecipe",
     "submit form": "submit"
   },
   render: function () {
@@ -20,28 +25,34 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var formData = $(event.target).serializeJSON();
     var attrs = formData["recipe"];
     var steps = formData["steps"];
-    // this.model.set(attrs);
-
     function success (model) {
-      Backbone.history.navigate("recipes/" + model.id, {trigger: true})
       if (model.isNew()) {
         Yumblr.recipes.add(model)
       }
+      Backbone.history.navigate("recipes/" + model.id, {trigger: true})
     }
-
-    this.model.save({recipe: attrs, steps: steps}, {
-      success: success
+    if (this.model.isNew()) {
+      this.model.save({recipe: attrs, steps: steps}, {
+        success: success
+      })
+    } else {
+      attrs["steps"] = steps;
+      this.model.save({recipe: attrs},{
+        success: success
+      });
+    }
+  },
+  stepSetup: function () {
+    var view = this;
+    _(3).times(function () {
+      var stepViews = view.subviews()["#steps-forms"];
+      var rank = stepViews ? stepViews.length + 1 : 1;
+      var step = new Yumblr.Models.Step({rank: rank}, {recipe: this.model});
+      view.addStep(step)
     })
   },
-  addStep: function () {
-    var step = new Yumblr.Models.Step();
-    if (this.subviews()["#steps-forms"]) {
-      step.set("rank", this.subviews()["#steps-forms"].length + 1)
-    } else {
-      step.set("rank", 1);
-    }
+  addStep: function (step) {
     var stepForm = new Yumblr.Views.StepForm({model: step});
     this.addSubview("#steps-forms", stepForm);
-    // step.set('rank', this.subviews()["#steps-forms"].length + 1);
   }
 });

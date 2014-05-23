@@ -1,21 +1,23 @@
 <div class="recipe-header row">
   <div class="col-lg-10 col-lg-offset-1">
-    <h2><%= recipe.escape('title') %></h2>
-    <button class="edit-recipe btn btn-default">Edit</button>
+    <div class="editable">
+      <h2 class="recipe-title"><%= recipe.escape('title') %></h2>
+      <div type="button" class="edit-title edit-button">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="recipe-body row">
   <div class="col-lg-4 col-lg-offset-1">
     <div id="recipe-show-img">
-      <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive" />
+      <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive editable" />
     </div>
 
-    <div id="ingredient-entries"></div>
+    <div id="ingredient-entries" class="editable"></div>
   </div>
   <div class="col-lg-6">
-    <div id="recipe-steps-div">
-      <ol id="recipe-steps"></ol>
-    </div>
+    <div id="recipe-steps"></div>
   </div>
 </div>

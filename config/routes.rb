@@ -2,7 +2,7 @@ Yumblr::Application.routes.draw do
   devise_for :users
   namespace :api, defaults: { format: :json } do
     resources :recipes do
-      resources :steps, only: [:create, :index]
+      resources :steps, only: [:update]
     end
     resources :ingredients, only: [:create, :index]
   end

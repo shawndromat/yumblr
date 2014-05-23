@@ -17,4 +17,6 @@ class Recipe < ActiveRecord::Base
   has_many :steps, inverse_of: :recipe
   has_many :ingredient_entries
   has_many :ingredients, through: :ingredient_entries, source: :ingredient
+
+  accepts_nested_attributes_for :steps, update_only: true
 end

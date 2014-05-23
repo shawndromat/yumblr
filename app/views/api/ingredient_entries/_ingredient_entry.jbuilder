@@ -1,5 +1,3 @@
-json.extract! entry, :id, :amount, :unit
-
-json.fraction entry.translate_fraction
+json.extract! entry, :id, :amount, :unit, :fraction
 
 json.ingredient entry.ingredient.name

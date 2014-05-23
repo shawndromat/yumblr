@@ -1,7 +1,10 @@
+
+<form>
 <div class="recipe-header row">
   <div class="col-lg-12">
     <h2 class="recipe-title">
-      <input class="form-control title-input" value="Recipe Title">
+      <input class="form-control title-input"
+             name="recipe[title]" value="Recipe Title">
     </h2>
   </div>
 </div>
@@ -14,13 +17,15 @@
   </div>
 
   <div class="col-lg-8">
-      <h3>Ingredients</h3>
+
+    <h3>Ingredients</h3>
       <div id="ingredient-entries"></div>
       <div class=row>
         <div class="add-entry add-item">
           <span class="glyphicon glyphicon-plus-sign"></span>
         </div>
       </div>
+
     <h3>Directions</h3>
     <div id="recipe-steps"></div>
     <div class=row>
@@ -28,38 +33,11 @@
         <span class="glyphicon glyphicon-plus-sign"></span>
       </div>
     </div>
+
+    <div class="col-md-12">
+      <input type="submit" id="submit"
+             class="btn btn-info btn-lg pull-right" value="Submit Recipe">
+    </div>
   </div>
 </div>
-
-
-
-
-
-<!--
-
-<form>
-  <div class="form-group">
-    <label for="recipe-title">Title</label>
-    <input class="form-control"
-            id="recipe-title"
-            name="recipe[title]"
-            value="<%= recipe.escape('title') %>">
-  </div>
-
-  <div class="form-group">
-    <label for="recipe-photo-url">Photo URL</label>
-    <input class="form-control"
-            id="recipe-photo-url"
-            name="recipe[photo_url]"
-            value="<%= recipe.escape('photo_url') %>">
-  </div>
-
-  <div class="form-group">
-    <label>Steps</label>
-    <ol id="steps-forms">
-
-    </ol>
-  </div>
-
-  <input class="btn btn-primary pull-right" type="submit" value="Submit Recipe">
-</form> -->
+</form>

@@ -15,8 +15,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
 
   has_many :steps, inverse_of: :recipe
-  has_many :ingredient_entries
+  has_many :ingredient_entries, inverse_of: :recipe
   has_many :ingredients, through: :ingredient_entries, source: :ingredient
 
-  accepts_nested_attributes_for :steps, update_only: true
+  accepts_nested_attributes_for :steps, :ingredient_entries
 end

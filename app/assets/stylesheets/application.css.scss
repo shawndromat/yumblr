@@ -8,6 +8,7 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require flatly_variables
  *= require_self
  *= require jquery.ui.datepicker
  *= require_tree .
@@ -106,6 +107,12 @@ ol, ol li{
     font-size: 1.5em;
     display: inline-block;
   }
+
+  .ingredient-entry {
+    p {
+      padding: 10px 0 5px 0;
+    }
+  }
 }
 
 .step-buttons {
@@ -120,18 +127,26 @@ ol, ol li{
   margin-left: 10px;
 }
 
+#recipe-show-img img{
+  border-radius: 20px;
+}
+
 .img-placeholder {
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
+  width: 325px;
+  height: 325px;
+  border-radius: 20px;
   background-color: #ccc;
   text-align: center;
 
   p {
-    margin-top: 120px;
+    margin-top: 130px;
     color: #fff;
     font-size: 1.5em;
   }
+}
+
+.img-placeholder:hover {
+  background-color: #ddd;
 }
 
 .title-form {
@@ -142,4 +157,13 @@ ol, ol li{
   text-align: center;
   font-size: 50px;
   color: #999;
+  margin-top: 10px;
+}
+
+.entry-form {
+  margin-bottom: 10px;
+}
+
+#submit {
+  margin-bottom: 50px;
 }

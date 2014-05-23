@@ -12,8 +12,12 @@
 <div class="recipe-body row">
   <div class="col-lg-4 img-col">
     <div id="recipe-show-img">
-      <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive editable" />
-    </div>
+      <% if (recipe.escape('photo_url')) {%>
+        <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive editable" />
+      <% } else if(recipe.id) {  %>
+        <div class="img-placeholder"></div>
+      <% } %>
+  </div>
   </div>
 
   <div class="col-lg-8">

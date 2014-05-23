@@ -10,7 +10,6 @@ module Api
 
     def create
       @recipe = current_user.owned_recipes.new(recipe_params)
-      @recipe.steps.new(step_params)
       if @recipe.save
         render json: @recipe
       else
@@ -34,11 +33,9 @@ module Api
 
     private
     def recipe_params
-      params.require(:recipe).permit(:title, :photo_url)
-    end
-
-    def step_params
-      params.permit(steps: [:body, :rank]).require(:steps).values
+      params.require(:recipe)
+        .permit(:title, :photo_url, steps_attributes: [:body, :rank],
+              ingredient_entries_attributes: [:ingredient_name, :rank, :amount, :unit, :fraction])
     end
   end
 end

@@ -9,8 +9,8 @@
 #  ingredient_id :integer          not null
 #  created_at    :datetime
 #  updated_at    :datetime
-#  numerator     :integer
-#  denominator   :integer
+#  rank          :integer
+#  fraction      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

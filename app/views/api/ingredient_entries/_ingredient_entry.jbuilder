@@ -1,3 +1,3 @@
 json.extract! entry, :id, :amount, :unit, :fraction, :rank
 
-json.ingredient entry.ingredient.name
+json.ingredient_name entry.ingredient.name

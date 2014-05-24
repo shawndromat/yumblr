@@ -1,7 +1,8 @@
 module Api
-  class IngredientEntriesController < ApplicationController
+  class IngredientEntriesController < ApiController
     def update
       @ingredient_entry = IngredientEntry.find(params[:id])
+      debugger
       if @ingredient_entry.update_attributes(ingredient_entry_params)
         render partial: "api/ingredient_entries/ingredient_entry",
                locals: { entry: @ingredient_entry }

@@ -23,11 +23,18 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     this.$('.editable').focus();
   },
   saveEntry: function () {
-    this.model.set('amount', this.$('.entry-amount').val());
-    this.model.set('rank', this.$('.entry-rank').val());
-    this.model.set('fraction', this.$('.fraction-select').val());
-    this.model.set('unit', this.$('.unit-select').val());
-    this.model.set('ingredient', this.$('.entry-ingredient').val());
-    this.model.save({})
+    var attrs = {
+      amount: this.$('.entry-amount').val(),
+      rank: this.$('.entry-rank').val(),
+      fraction: this.$('.fraction-select').val(),
+      unit: this.$('.unit-select').val(),
+      ingredient_name: this.$('.entry-ingredient').val()
+    }
+    // this.model.set('amount', this.$('.entry-amount').val());
+    // this.model.set('rank', this.$('.entry-rank').val());
+    // this.model.set('fraction', this.$('.fraction-select').val());
+    // this.model.set('unit', this.$('.unit-select').val());
+    // this.model.set('ingredient_name', this.$('.entry-ingredient').val());
+    this.model.save({ingredient_entry: attrs})
   }
 });

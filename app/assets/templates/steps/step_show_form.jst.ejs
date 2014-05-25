@@ -1,1 +1,9 @@
-<textarea class='step-form editable form-control'><%= step.escape("body") %></textarea>
+<div class="edit-component">
+  <div class="col-md-10 step-body">
+    <textarea
+    class='step-form editable form-control'><%= step.escape("body") %></textarea>
+  </div>
+  <div class="col-md-1 remove-item">
+    <span class="glyphicon glyphicon-remove"></span>
+  </div>
+</div>

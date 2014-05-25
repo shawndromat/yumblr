@@ -53,15 +53,7 @@
   }
 }
 
-ol, ol li{
-  input {
-    margin-top: -20px;
-    margin-bottom: 20px
-  }
-}
-
-.edit-button {
-  display: none;
+.edit-button, .remove-item {
   width: 30px;
   height: 30px;
   background-color: #ccc;
@@ -69,12 +61,16 @@ ol, ol li{
   position: relative;
   z-index: 1;
 
-  .glyphicon-pencil {
+  .glyphicon {
     position: absolute;
     top: 8px;
     left: 8px;
     color: white;
   }
+}
+
+.edit-button {
+  display: none;
 }
 
 .editable:hover .edit-button {
@@ -86,12 +82,20 @@ ol, ol li{
     display: inline-block;
   }
 
+  .add-item-wrapper {
+    text-align: center;
+
+    .show-add-item {
+      visibility: hidden;
+      color: #ccc;
+      font-size: 2em;
+    }
+  }
+}
+
+#ingredients-wrapper:hover, #steps-wrapper:hover{
   .show-add-item {
-    display: none;
-    color: #ccc;
-    font-size: 2em;
-    margin-left: 10px;
-    padding-top: 10px;
+    visibility: visible;
   }
 }
 
@@ -194,10 +198,14 @@ ol, ol li{
   margin-top: 10px;
 }
 
-.entry-form {
+.edit-component {
   margin-bottom: 10px;
 }
 
 #submit {
   margin-bottom: 50px;
+}
+
+.entry-form {
+  padding: 20px 0;
 }

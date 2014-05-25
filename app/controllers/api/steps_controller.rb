@@ -18,6 +18,12 @@ module Api
       end
     end
 
+    def destroy
+      @step = Step.find(params[:id])
+      @step.try(:destroy)
+      render partial: "api/steps/step", locals: { step: @step }
+    end
+
     private
     def step_params
       params.require(:step).permit(:body, :id, :rank, :recipe_id)

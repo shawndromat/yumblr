@@ -9,8 +9,8 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
   formTemplate: JST["steps/step_show_form"],
   events: {
     "click .edit-step": "editStep",
-    "blur .step-form": "saveStep",
-    // "change .step-form": "saveStep"
+    "mouseleave .edit-component": "saveStep",
+    "click .remove-item": "removeStep"
   },
   render: function () {
     var content = this.template({step: this.model});
@@ -22,7 +22,7 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
   },
   editStep: function (event) {
     var content = this.formTemplate({step: this.model});
-    this.$(".step-body").html(content);
+    this.$(".editable").html(content);
     this.$(".step-form").focus();
   },
   saveStep: function (event) {
@@ -32,10 +32,26 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
       rank: this.model.get('rank')
     }
     var view = this;
-    this.model.save({step: attrs}, {
-      success: function (model) {
-        view.triggerForm = false;
-      }
-    });
+    if (attrs.body) {
+      this.model.save({step: attrs}, {
+        success: function (model) {
+          view.triggerForm = false;
+        }
+      });
+    }
+  },
+  removeStep: function () {
+    var view = this;
+
+    function success (model) {
+      view.collection.remove(model);
+      view.remove();
+    }
+
+    if (this.model.id) {
+      this.model.destroy({ success: success });
+    } else {
+      success(this.model);
+    }
   }
 })

@@ -1,8 +1,11 @@
 <div class="col-md-1"><p><%= step.escape('rank') %>.</p></div>
-<div class="col-md-11">
+<div class="col-md-10">
   <input type="hidden"
          name="recipe[steps_attributes][<%= step.escape('rank') %>][rank]"
          value="<%= step.escape('rank') %>">
   <textarea class="form-control"
             name="recipe[steps_attributes][<%= step.escape('rank') %>][body]"></textarea>
+</div>
+<div class="col-md-1 remove-item">
+  <span class="glyphicon glyphicon-remove"></span>
 </div>

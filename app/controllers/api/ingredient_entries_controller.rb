@@ -20,6 +20,13 @@ module Api
       end
     end
 
+    def destroy
+      @ingredient_entry = IngredientEntry.find(params[:id])
+      @ingredient_entry.try(:destroy)
+      render partial: "api/ingredient_entries/ingredient_entry",
+             locals: { entry: @ingredient_entry }
+    end
+
     private
     def ingredient_entry_params
       permitted_params = [:id, :rank, :amount, :fraction,

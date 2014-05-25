@@ -9,8 +9,8 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   formTemplate: JST["ingredient_entries/ingredient_entry_form"],
   events: {
     "click .edit-entry": "editEntry",
-    "blur .entry-amount,.entry-rank,.fraction-select,.unit-select,.entry-ingredient": "saveEntry",
-    // "change .entry-amount,.entry-rank,.fraction-select,.unit-select,.entry-ingredient": "saveEntry"
+    "mouseleave .edit-component": "saveEntry",
+    "click .remove-item": "removeEntry"
   },
   render: function () {
     var content = this.template({entry: this.model});
@@ -23,8 +23,8 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   editEntry: function () {
     var form = this.formTemplate({entry: this.model});
     this.$('.editable').html(form);
-    this.$('.unit-select').val(this.model.get('unit'));
-    this.$('.fraction-select').val(this.model.get('fraction'));
+    this.$('.unit-select').val((this.model.get('unit') || 'cup'));
+    this.$('.fraction-select').val((this.model.get('fraction') || "1/2"));
     this.$('.entry-ingredient').focus();
   },
   saveEntry: function () {
@@ -36,12 +36,28 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
       ingredient_name: this.$('.entry-ingredient').val(),
       recipe_id: this.model.recipe.id
     }
-    this.model.set(attrs);
+    if (attrs.ingredient_name) {
+      this.model.set(attrs);
+      var view = this;
+      this.model.save({ingredient_entry: attrs}, {
+        success: function (model) {
+          view.triggerForm = false;
+        }
+      });
+    }
+  },
+  removeEntry: function () {
     var view = this;
-    this.model.save({ingredient_entry: attrs}, {
-      success: function (model) {
-        view.triggerForm = false;
-      }
-    });
+
+    function success (model) {
+      view.collection.remove(model);
+      view.remove();
+    }
+
+    if (this.model.id) {
+      this.model.destroy({ success: success });
+    } else {
+      success(this.model);
+    }
   }
 });

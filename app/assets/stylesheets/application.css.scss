@@ -67,6 +67,7 @@ ol, ol li{
   background-color: #ccc;
   border-radius: 5px;
   position: relative;
+  z-index: 1;
 
   .glyphicon-pencil {
     position: absolute;
@@ -120,8 +121,28 @@ ol, ol li{
   }
 }
 
+.img-form, .img-placeholder {
+  width: 325px;
+  height: 325px;
+  border-radius: 20px;
+  background-color: #ccc;
+  text-align: center;
+  color: #fff;
+
+
+  .form-group {
+    padding-top: 90px;
+    font-size: 1.5em;
+  }
+}
+
 #recipe-show-img:hover {
   position: relative;
+
+  .img-placeholder {
+    background-color: #ddd;
+    position: relative;
+  }
 
   .edit-button {
     display: inline-block;
@@ -160,23 +181,6 @@ ol, ol li{
 
 #recipe-show-img img{
   border-radius: 20px;
-}
-
-.img-placeholder {
-  width: 325px;
-  height: 325px;
-  border-radius: 20px;
-  background-color: #ccc;
-  text-align: center;
-  color: #fff;
-  font-size: 1.5em;
-  p, .form-group {
-    margin-top: 100px;
-  }
-}
-
-.img-placeholder:hover {
-  background-color: #ddd;
 }
 
 .title-form {

@@ -15,8 +15,9 @@ class Ingredient < ActiveRecord::Base
   has_many :recipes, through: :ingredient_entries, source: :recipe
 
   def self.find_or_create_by_name(name)
-    ingredient = Ingredient.find_by_name(name.titleize)
+    ingredient_name = name.strip.downcase.singularize
+    ingredient = Ingredient.find_by_name(ingredient_name.titleize)
     return ingredient if ingredient
-    Ingredient.create!(name: name.titleize)
+    Ingredient.create!(name: ingredient_name.titleize)
   end
 end

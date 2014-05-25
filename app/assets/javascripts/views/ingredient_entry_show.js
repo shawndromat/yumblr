@@ -36,7 +36,8 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
       ingredient_name: this.$('.entry-ingredient').val(),
       recipe_id: this.model.recipe.id
     }
-
+    this.model.set(attrs);
+    debugger
     var view = this;
     this.model.save({ingredient_entry: attrs}, {
       success: function (model) {

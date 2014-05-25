@@ -26,10 +26,13 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
     this.$(".step-form").focus();
   },
   saveStep: function (event) {
-    var body = $(event.target).val();
-    this.model.set('recipe_id', this.model.recipe.id);
+    var attrs = {
+      body: $(event.target).val(),
+      recipe_id: this.model.recipe.id,
+      rank: this.model.get('rank')
+    }
     var view = this;
-    this.model.save({body: body}, {
+    this.model.save({step: attrs}, {
       success: function (model) {
         view.triggerForm = false;
       }

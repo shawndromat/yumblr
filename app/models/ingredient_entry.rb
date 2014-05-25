@@ -43,8 +43,12 @@ class IngredientEntry < ActiveRecord::Base
       "pint",
       "head",
       "slice",
-      "jar"
+      "jar",
+      "piece"
     ]
+
+  PLURAL_UNITS = ["cup", "pinch", "bunch", "clove", "can", "liter",
+                    "gallon", "pint", "head", "slice", "jar", "piece"]
 
   FRACTIONS = [
       "",
@@ -73,5 +77,15 @@ class IngredientEntry < ActiveRecord::Base
 
   def ingredient_name=(name)
     self.ingredient = Ingredient.find_or_create_by_name(name)
+  end
+
+  def unit_pluralize
+    return self.unit unless IngredientEntry::PLURAL_UNITS.include?(unit)
+    if ((self.amount && self.amount > 1) ||
+          (self.amount == 1 && self.fraction != ""))
+      return self.unit.pluralize
+    else
+      return self.unit
+    end
   end
 end

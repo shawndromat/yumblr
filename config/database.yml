@@ -48,10 +48,3 @@ test:
   database: yumblr_test
   pool: 5
   username: Shawna
-
-production:
-  adapter: postgresql
-  encoding: unicode
-  database: yumblr_production
-  pool: 5
-  username: Shawna

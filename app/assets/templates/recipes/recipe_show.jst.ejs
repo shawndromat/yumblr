@@ -13,10 +13,15 @@
   <div class="col-lg-4 img-col">
     <div id="recipe-show-img">
       <% if (recipe.escape('photo_url')) {%>
-        <img src="<%= recipe.escape('photo_url') %>" alt="<%= recipe.escape('title') %>" class="img-responsive editable" />
+        <img src="<%= recipe.escape('photo_url') %>"
+             alt="<%= recipe.escape('title') %>"
+             class="img-responsive editable" />
       <% } else {  %>
         <div class="img-placeholder"></div>
       <% } %>
+      <div type="button" class="edit-photo edit-button">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </div>
   </div>
   </div>
 

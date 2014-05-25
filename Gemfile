@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'rails', '4.0.2'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.0'
@@ -11,8 +13,9 @@ gem 'devise'
 gem 'pry-rails'
 gem 'backbone-on-rails'
 gem 'bootstrap-sass', '~> 3.1.1'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
+gem 'font-awesome-sass'
 
 group :development do
   gem 'annotate'

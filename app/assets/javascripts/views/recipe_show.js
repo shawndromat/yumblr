@@ -15,12 +15,15 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     });
   },
   template: JST["recipes/recipe_show"],
+  photoTemplate: JST["recipes/photo_form"],
   events: {
     "click .edit-title": "editTitle",
     "blur .recipe-title": "saveTitle",
     "change .recipe-title": "saveTitle",
     "click .add-step": "addStepForm",
-    "click .add-entry": "addEntryForm"
+    "click .add-entry": "addEntryForm",
+    "click .edit-photo": "editPhoto",
+    "blur #photo-input": "savePhoto"
   },
   render: function () {
     var content = this.template({recipe: this.model});
@@ -70,5 +73,14 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   saveTitle: function (event) {
     var title = $(event.target).val();
     this.model.save({title: title});
+  },
+  editPhoto: function (event) {
+    var content = this.photoTemplate({recipe: this.model});
+    this.$('#recipe-show-img').html(content);
+    this.$('#photo-input').focus();
+  },
+  savePhoto: function (event) {
+    var photoUrl = $(event.target).val();
+    this.model.save({photo_url: photoUrl})
   }
 });

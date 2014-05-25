@@ -4,8 +4,8 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     this.addStepForm();
   },
   template: JST["recipes/recipe_form"],
+  photoTemplate: JST["recipes/photo_form"],
   events: {
-    "click .recipe-title": "editTitle",
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
     "sortupdate #recipe-steps": "updateSteps",
@@ -47,5 +47,5 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
         Backbone.history.navigate("recipes/" + model.id, {trigger: true})
       }
     })
-  },
+  }
 });

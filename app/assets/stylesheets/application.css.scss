@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require flatly_variables
+ *= require font-awesome
  *= require_self
  *= require jquery.ui.datepicker
  *= require_tree .
@@ -119,6 +120,20 @@ ol, ol li{
   }
 }
 
+#recipe-show-img:hover {
+  position: relative;
+
+  .edit-button {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.75em;
+  }
+}
+
 .recipe-body {
   margin-top: 30px;
 
@@ -153,11 +168,10 @@ ol, ol li{
   border-radius: 20px;
   background-color: #ccc;
   text-align: center;
-
-  p {
-    margin-top: 130px;
-    color: #fff;
-    font-size: 1.5em;
+  color: #fff;
+  font-size: 1.5em;
+  p, .form-group {
+    margin-top: 100px;
   }
 }
 

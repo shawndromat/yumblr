@@ -47,6 +47,13 @@ Backbone.CompositeView = Backbone.View.extend({
       })
     })
   },
+  sortSubviews: function (selector, criteria) {
+    var subviews = _(this.subviews()[selector]).sortBy(function (subview) {
+        return subview.model.get(criteria);
+      })
+
+      this.subviews()[selector] = subviews;
+  },
   remove: function () {
     Backbone.View.prototype.remove.call(this);
     _(this.subviews()).forEach(function(subviews, selector) {

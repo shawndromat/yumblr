@@ -4,7 +4,7 @@ window.Yumblr.Views.IngredientEntryForm = Backbone.View.extend({
   render: function () {
     var content = this.template({entry: this.model});
     this.$el.html(content);
-    this.$('.fraction-select').attr("selectedIndex", -1);
+    this.$(".fraction-select").attr("selectedIndex", -1);
     return this;
   }
 });

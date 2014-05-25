@@ -22,6 +22,7 @@ class IngredientEntry < ActiveRecord::Base
   belongs_to :ingredient
 
   UNITS = [
+      "",
       "cup",
       "tbsp",
       "tsp",
@@ -41,7 +42,8 @@ class IngredientEntry < ActiveRecord::Base
       "gallon",
       "pint",
       "head",
-      "slice"
+      "slice",
+      "jar"
     ]
 
   FRACTIONS = [

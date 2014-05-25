@@ -1,5 +1,8 @@
 window.Yumblr.Models.Step = Backbone.Model.extend({
+  initialize: function (options) {
+    this.recipe = options.recipe;
+  },
   urlRoot: function () {
-    return this.collection.recipe.url() + "/steps"
+    return this.recipe.url() + "/steps"
   }
 });

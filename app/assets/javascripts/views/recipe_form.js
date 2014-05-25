@@ -25,7 +25,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   },
   addStepForm: function () {
     var rank = this.$(".step-form").length + 1;
-    var step = new Yumblr.Models.Step({rank: rank});
+    var step = new Yumblr.Models.Step({rank: rank, recipe: this.model});
     var stepForm = new Yumblr.Views.StepForm({model: step});
     this.addSubview("#recipe-steps", stepForm);
   },

@@ -10,7 +10,6 @@ module Api
 
     def create
       @recipe = current_user.owned_recipes.new(recipe_params)
-      debugger
       if @recipe.save
         render json: @recipe
       else

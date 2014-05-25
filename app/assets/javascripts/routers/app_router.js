@@ -20,6 +20,7 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     var showView = new Yumblr.Views.RecipeShow({
       model: recipe
     });
+    recipe.fetch();
     this._swapView(showView);
   },
   recipeNew: function () {

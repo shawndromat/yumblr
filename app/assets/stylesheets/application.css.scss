@@ -79,6 +79,26 @@ ol, ol li{
   display: inline-block;
 }
 
+#ingredients-wrapper, #steps-wrapper{
+  h3 {
+    display: inline-block;
+  }
+
+  .show-add-item {
+    display: none;
+    color: #ccc;
+    font-size: 2em;
+    margin-left: 10px;
+    padding-top: 10px;
+  }
+}
+
+#ingredients-wrapper:hover, #steps-wrapper:hover {
+  .show-add-item {
+    display: inline-block;
+  }
+}
+
 .recipe-header {
   h2 {
     display: inline-block;
@@ -117,10 +137,6 @@ ol, ol li{
 
 .step-buttons {
   padding: 0;
-}
-
-.step-form {
-  font-size: 1.25em;
 }
 
 .edit-entry {

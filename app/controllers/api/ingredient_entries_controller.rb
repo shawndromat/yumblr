@@ -2,7 +2,6 @@ module Api
   class IngredientEntriesController < ApiController
     def create
       @ingredient_entry = IngredientEntry.new(ingredient_entry_params)
-      debugger
       if @ingredient_entry.save
         render partial: "api/ingredient_entries/ingredient_entry",
                locals: { entry: @ingredient_entry }

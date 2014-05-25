@@ -25,7 +25,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     this.$('.editable').html(form);
     this.$('.unit-select').val(this.model.get('unit'));
     this.$('.fraction-select').val(this.model.get('fraction'));
-    this.$('.editable').focus();
+    this.$('.entry-ingredient').focus();
   },
   saveEntry: function () {
     var attrs = {
@@ -37,7 +37,6 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
       recipe_id: this.model.recipe.id
     }
     this.model.set(attrs);
-    debugger
     var view = this;
     this.model.save({ingredient_entry: attrs}, {
       success: function (model) {

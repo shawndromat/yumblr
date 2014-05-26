@@ -9,7 +9,7 @@ module Api
     end
 
     def create
-      @recipe = current_user.owned_recipes.new(recipe_params)
+      @recipe = current_or_guest_user.owned_recipes.new(recipe_params)
       if @recipe.save
         render json: @recipe
       else

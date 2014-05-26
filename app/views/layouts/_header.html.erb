@@ -1,25 +1,36 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Yumblr</a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Profile</a></li>
-
         <% if current_user %>
-          <li><p class="navbar-text">You are signed in as <%= current_user.email %></p></li>
+          <li>
+            <p class="navbar-text">
+              You are signed in as <%= current_or_guest_user.username %>
+            </p>
+          </li>
           <li>
             <%= button_to "Log Out", destroy_user_session_url, class: "btn btn-default navbar-btn pull-right", method: :delete %>
           </li>
         <% else %>
-          <li><%= link_to "Sign In", new_user_session_url %></li>
-          <li><%= link_to "Sign Up", new_user_registration_url %></li>
+          <li>
+            <a data-toggle="modal"
+               data-target="#auth-modal"
+               id="sign-in-link">Sign In</a>
+          </li>
+          <li>
+            <a data-toggle="modal"
+               data-target="#auth-modal"
+               id="sign-up-link">Sign Up</a>
+          </li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+
+  <%= render "layouts/auth_modal" %>
 </nav>

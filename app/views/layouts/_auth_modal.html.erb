@@ -1,0 +1,73 @@
+<div id="auth-modal" class="modal fade">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <ul class="nav nav-tabs auth-nav">
+      <li id="sign-in-tab"><a href="#sign-in">Sign In</a></li>
+      <li id="sign-up-tab"><a href="#sign-up">Sign Up</a></li>
+    </ul>
+
+    <div class="modal-body">
+      <div class="tab-content">
+        <div class="tab-pane" id="sign-in">
+          <%= render "devise/sessions/new" %>
+          <h2>Sign in</h2>
+
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name),
+                          html: {class: "col-md-lg-12 form-horizontal"}) do |f| %>
+            <div class="form-group row">
+              <%= f.label :username, class: "control-label col-xs-3" %>
+              <%= f.text_field :username, autofocus: true,
+                    class: "col-xs-3 form-control username-field", placeholder: "Email" %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :password, class: "control-label col-xs-3" %>
+              <%= f.password_field :password, autocomplete: "off",
+                    class: "col-xs-3 form-control password-field", placeholder: "Password"  %>
+            </div>
+
+            <%= f.submit "Sign in", class: "btn btn-primary pull-right" %>
+
+          <% end %>
+
+        </div>
+        <div class="tab-pane" id="sign-up">
+          <%= render "devise/registrations/new" %>
+          <h2>Sign up</h2>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+                        html: {css: "form-horizontal"}) do |f| %>
+            <%= devise_error_messages! %>
+
+            <div class="form-group row">
+                <%= f.label :username, class: "control-label col-xs-3" %>
+                <%= f.text_field :username, autofocus: true,
+                      class: "col-xs-3 form-control username-field", placeholder: "Username" %>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :password, class: "control-label col-xs-3" %>
+                <%= f.password_field :password, autocomplete: "off",
+                      class: "col-xs-3 form-control password-field", placeholder: "Password"  %>
+              </div>
+
+              <div class="form-group row">
+                <%= f.label :password_confirmation, class: "control-label col-xs-3" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off",
+                      class: "col-xs-3 form-control password-field", placeholder: "Password"  %>
+              </div>
+
+            <div><%= f.submit "Sign up" %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+    <p>or</p>
+    <a id="guest-sign-in" class="btn btn-info">Sign in as Guest</a>
+    </div>
+  </div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

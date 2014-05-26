@@ -22,6 +22,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  validates :username, uniqueness: true
 
   has_many :owned_recipes, class_name: "Recipe", foreign_key: :owner_id
+
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
 end

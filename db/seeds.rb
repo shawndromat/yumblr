@@ -2,13 +2,12 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
 
-shawna = User.find_by_email("shawna@yumblr.io")
+guest = User.find_by_email("guest@yumblr.us")
 
-
-
-unless shawna
-  shawna = User.create(email: "shawna@yumblr.io")
-  shawna.save!(:validate => false)
+unless guest
+  guest = User.create(email: "guest@yumblr.us")
+  guest.password = "guestguest"
+  guest.save!(:validate => false)
 end
 
 pbj = Recipe.create(

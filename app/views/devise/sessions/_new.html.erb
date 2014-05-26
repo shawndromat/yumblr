@@ -1,0 +1,19 @@
+<h2>Sign in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name),
+                html: {class: "col-md-lg-12 form-horizontal"}) do |f| %>
+  <div class="form-group row">
+    <%= f.label :username, class: "control-label col-xs-3" %>
+    <%= f.text_field :username, autofocus: true,
+          class: "col-xs-3 form-control username-field", placeholder: "Email" %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :password, class: "control-label col-xs-3" %>
+    <%= f.password_field :password, autocomplete: "off",
+          class: "col-xs-3 form-control password-field", placeholder: "Password"  %>
+  </div>
+
+  <%= f.submit "Sign in", class: "btn btn-primary pull-right" %>
+
+<% end %>

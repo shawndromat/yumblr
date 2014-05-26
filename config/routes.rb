@@ -1,5 +1,9 @@
 Yumblr::Application.routes.draw do
-  
+  resources :users, only: [:create]
+  resource :session, only: [:create, :destroy]
+
+  get "session/guest_sign_in", to: "sessions#guest_sign_in"
+
   namespace :api, defaults: { format: :json } do
     resources :recipes do
       resources :steps, only: [:create, :update, :destroy]

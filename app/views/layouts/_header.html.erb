@@ -10,11 +10,11 @@
         <% if current_user %>
           <li>
             <p class="navbar-text">
-              You are signed in as <%= current_or_guest_user.username %>
+              You are signed in as <%= current_user.username %>
             </p>
           </li>
           <li>
-            <%= button_to "Log Out", destroy_user_session_url, class: "btn btn-default navbar-btn pull-right", method: :delete %>
+            <%= button_to "Log Out", session_url, class: "btn btn-default navbar-btn pull-right", method: :delete %>
           </li>
         <% else %>
           <li>

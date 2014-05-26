@@ -1,13 +1,9 @@
 module ApplicationHelper
-  def resource_name
-    :user
-  end
 
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
+  def form_auth_token
+    "<input
+    type='hidden'
+    name='authenticity_token'
+    value='#{ form_authenticity_token }'>".html_safe
   end
 end

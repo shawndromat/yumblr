@@ -1,5 +1,5 @@
 <div class="recipe-header row">
-  <div class="col-lg-12">
+  <div class="col-md-3 col-md-offset-2">
     <div class="editable">
       <h2 class="recipe-title"><%= recipe.escape('title') %></h2>
       <div class="edit-title edit-button">
@@ -7,10 +7,8 @@
       </div>
     </div>
   </div>
-</div>
 
-<div class="recipe-body row">
-  <div class="col-lg-4 img-col">
+  <div class="col-md-7">
     <div id="recipe-show-img">
       <% if (recipe.escape('photo_url')) {%>
         <img src="<%= recipe.escape('photo_url') %>"
@@ -26,29 +24,39 @@
           </div>
         </div>
       <% } %>
+    </div>
   </div>
-  </div>
+</div>
 
-  <div class="col-lg-8">
+<div class="recipe-body row">
+  <div class="col-lg-10 col-lg-offset-1">
     <div id="ingredients-wrapper">
-      <h3>Ingredients</h3>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+          <h3>Ingredients</h3>
+        </div>
+      </div>
         <div id="ingredient-entries"></div>
         <div class="row add-item-wrapper">
           <div class="add-entry show-add-item">
             <span class="glyphicon glyphicon-plus-sign"></span>
           </div>
         </div>
-    </div>
+    </div><!-- ingredients-wrapper -->
 
     <div id="steps-wrapper">
-      <h3>Directions</h3>
-      <div id="recipe-steps"></div>
-      <div class="row add-item-wrapper">
-        <div class="add-step show-add-item">
-          <span class="glyphicon glyphicon-plus-sign"></span>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-1">
+          <h3>Directions</h3>
         </div>
       </div>
-    </div>
-
+      <div id="recipe-steps"></div>
+        <div class="row add-item-wrapper">
+          <div class="add-step show-add-item">
+            <span class="glyphicon glyphicon-plus-sign"></span>
+          </div>
+        </div>
+      </div>
+    </div><!-- steps-wrapper -->
   </div>
-</div>
+</div><!-- recipe-body -->

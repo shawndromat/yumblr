@@ -14,7 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.sortable
 //= require jquery.serializejson.min.js
-//= require countdown.js
+//= require jquery.plugin.min.js
+//= require jquery.countdown.min.js
 //= require bootstrap
 //= require underscore
 //= require backbone

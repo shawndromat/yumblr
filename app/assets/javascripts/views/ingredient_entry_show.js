@@ -2,7 +2,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   initialize: function (options) {
     this.triggerForm = options.triggerForm;
 
-    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, "sync", this.render);
   },
   className: "row ingredient-entry",
   template: JST["ingredient_entries/ingredient_entry_show"],
@@ -20,20 +20,21 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     }
     return this;
   },
-  editEntry: function () {
+  editEntry: function (event) {
     var form = this.formTemplate({entry: this.model});
-    this.$('.editable').html(form);
-    this.$('.unit-select').val((this.model.get('unit') || 'cup'));
-    this.$('.fraction-select').val((this.model.get('fraction') || "1/2"));
-    this.$('.entry-ingredient').focus();
+    this.$(".editable").html(form);
+    this.$(".edit-button").hide();
+    this.$(".unit-select").val((this.model.get("unit") || "cup"));
+    this.$(".fraction-select").val((this.model.get("fraction") || "1/2"));
+    this.$(".entry-ingredient").focus();
   },
   saveEntry: function () {
     var attrs = {
-      amount: this.$('.entry-amount').val(),
-      rank: this.$('.entry-rank').val(),
-      fraction: this.$('.fraction-select').val(),
-      unit: this.$('.unit-select').val(),
-      ingredient_name: this.$('.entry-ingredient').val(),
+      amount: this.$(".entry-amount").val(),
+      rank: this.$(".entry-rank").val(),
+      fraction: this.$(".fraction-select").val(),
+      unit: this.$(".unit-select").val(),
+      ingredient_name: this.$(".entry-ingredient").val(),
       recipe_id: this.model.recipe.id
     }
     if (attrs.ingredient_name) {

@@ -12,6 +12,7 @@
  *= require font-awesome
  *= require_self
  *= require jquery.ui.datepicker
+ *= require jquery.countdown.css
  *= require_tree .
  */
 
@@ -61,6 +62,7 @@
  */
 
 .recipe-header {
+
   h2 {
     display: inline-block;
   }
@@ -80,7 +82,9 @@
   }
 }
 
-.edit-button, .remove-item {
+.edit-button, .remove-item,
+.play-button, .close-timer,
+.restart-timer {
   width: 30px;
   height: 30px;
   background-color: #ccc;
@@ -100,8 +104,12 @@
   display: none;
 }
 
-.editable:hover .edit-button {
+.ingredient-entry:hover .edit-button, .recipe-step:hover .edit-button {
   display: inline-block;
+}
+
+#recipe-show-img {
+  max-height: 300px;
 }
 
 #ingredients-wrapper, #steps-wrapper{
@@ -137,8 +145,13 @@
   }
 }
 
+.edit-ingredient, .edit-amount {
+  padding-left: 0px;
+}
+
 #recipe-show-img img, .img-form, .img-placeholder {
   border-radius: 20px;
+  max-height: 300px;
 }
 
 #recipe-show-img:hover {
@@ -152,7 +165,7 @@
   .edit-button {
     display: inline-block;
     position: absolute;
-    right: 10px;
+    left: 10px;
     bottom: 10px;
     width: 40px;
     height: 40px;
@@ -162,6 +175,7 @@
 
 .recipe-body {
   margin-top: 30px;
+  margin-bottom: 60px;
 
   p  {
     padding: 10px 0;
@@ -171,7 +185,11 @@
 
   .ingredient-entry {
     p {
-      padding: 10px 0 5px 0;
+      padding: 5px 0 5px 0;
+    }
+    height: 50px;
+    .ingredient-name {
+      font-weight: bold;
     }
   }
 }
@@ -183,6 +201,78 @@
 .edit-entry {
   margin-left: 10px;
 }
+
+/*
+ * Timer
+ */
+
+ .step-timer {
+   position: relative
+ }
+
+ .timer-cover {
+   background-color: #000;
+   border-radius: 10px;
+   width: 135px;
+   height: 50px;
+   margin-left: 15px;
+   color: #fff;
+   visibility: hidden;
+   z-index: 1;
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+
+ .timer-controls {
+   .play-button, .close-timer, .restart-timer {
+     display: inline-block;
+   }
+ }
+
+ @-webkit-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-moz-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-ms-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-o-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ .flash {
+   visibility: visible;
+   -webkit-animation-duration: 1.5s;
+   -moz-animation-duration: 1.5s;
+   -ms-animation-duration: 1.5s;
+   -o-animation-duration: 1.5s;
+   animation-duration: 1.5s;
+   -webkit-animation-name: flash;
+   -moz-animation-name: flash;
+   -ms-animation-name: flash;
+   -o-animation-name: flash;
+   animation-name: flash;
+   -webkit-animation-iteration-count: 3;
+   -moz-animation-iteration-count: 3;
+   -ms-animation-iteration-count: 3;
+   -o-animation-iteration-count: 3;
+   animation-iteration-count: 3;
+ }
 
 /*
  * Recipe Form
@@ -204,10 +294,6 @@
 
 #submit {
   margin-bottom: 50px;
-}
-
-.entry-form {
-  padding: 20px 0;
 }
 
 /*

@@ -1,16 +1,25 @@
-<div class="col-md-10 col-md-offset-1">
-  <div class="recipes-index">
+<!-- <div class="col-md-10 col-md-offset-1"> -->
+  <div class="recipes-index col-md-10">
       <% recipes.each(function (recipe) { %>
-        <a class="recipe-link" href="#recipes/<%= recipe.escape('id') %>">
-          <div class="index-card">
-            <div class="title-card">
-              <%= recipe.escape('title') %>
-            </div>
-            <img class="recipe-img"
-                  src="<%= recipe.escape('photo_url') %>"
-                  alt="<%= recipe.escape('title') %>" />
+        <div class="row recipe-wrapper">
+          <div class="col-md-4">
+            <a href="#recipes/<%= recipe.escape('id') %>">
+              <div class="title-card">
+                <h3><%= recipe.escape("title") %></h3>
+                <h4>by <%= recipe.escape("owner") %></h4>
+              </div>
+            </a>
           </div>
-        </a>
+
+          <div class="col-md-8">
+            <div class="index-card">
+              <img class="recipe-img"
+                    src="<%= recipe.escape('photo_url') %>"
+                    alt="<%= recipe.escape('title') %>" />
+            </div>
+          </div>
+        </div>
+
       <% }) %>
   </div>
-</div>
+<!-- </div> -->

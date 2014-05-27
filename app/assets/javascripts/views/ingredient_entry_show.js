@@ -9,7 +9,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   formTemplate: JST["ingredient_entries/ingredient_entry_form"],
   events: {
     "click .edit-entry": "editEntry",
-    "mouseleave .edit-component": "saveEntry",
+    "click .save-item": "saveEntry",
     "click .remove-item": "removeEntry"
   },
   render: function () {
@@ -22,7 +22,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   },
   editEntry: function (event) {
     var form = this.formTemplate({entry: this.model});
-    this.$(".editable").html(form);
+    this.$el.html(form);
     this.$(".edit-button").hide();
     this.$(".unit-select").val((this.model.get("unit") || "cup"));
     this.$(".fraction-select").val((this.model.get("fraction") || "1/2"));

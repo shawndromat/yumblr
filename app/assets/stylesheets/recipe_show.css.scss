@@ -1,5 +1,7 @@
 $text-color: #2C3E50;
-
+$light-yellow: #B4F9FF;
+$light-red: #FFAEAE;
+$light-green: #AEFFC2;
 $light-teal: #28C1A3;
 $dark-teal: #16A085;
 /*
@@ -7,22 +9,27 @@ $dark-teal: #16A085;
  *  ===========
  */
 
-/*
- *  Header
- */
+/*  Header  */
+
 .recipe-header {
 
   h2 {
     display: inline-block;
   }
 
+  .title-card:hover {
+    .edit-button {
+      visibility: visible;
+    }
+  }
+
   .edit-button {
     margin-left: 5px;
     margin-top: 5px;
+    visibility: hidden;
   }
 
   .recipe-title .form-control {
-    height: 50px;
     font-size: 1em;
   }
 
@@ -32,9 +39,19 @@ $dark-teal: #16A085;
 }
 
 #recipe-show-img {
+  position: relative;
+
   img {
     max-width: 500px;
     max-height: 500px;
+  }
+
+  .edit-button {
+    position: absolute;
+    left: 10px;
+    bottom: 15px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -52,7 +69,7 @@ $dark-teal: #16A085;
 }
 
 #recipe-show-img img, .img-form, .img-placeholder {
-  border-radius: 20px;
+  border-radius: 6px;
 }
 
 #recipe-show-img:hover {
@@ -64,30 +81,22 @@ $dark-teal: #16A085;
   }
 
   .edit-button {
-    display: inline-block;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
-    width: 40px;
-    height: 40px;
-    font-size: 1.75em;
+    visibility: visible;
   }
 }
 
-/*
- *  Components
- */
+/*  Components */
 
-.entry-main, .step-main, .edit-entry-tab {
+.entry-main, .step-main, .entry-form, .entry-inputs {
+ z-index: 2;
  background-color: #fff;
 }
 
-.edit-button, .remove-item {
+.edit-button, .remove-item, .save-item {
 // .close-timer, .restart-timer, .play-button
 
-  width: 30px;
-  height: 30px;
-  background-color: #ccc;
+  width: 35px;
+  height: 35px;
   border-radius: 5px;
   position: relative;
   z-index: 1;
@@ -96,8 +105,30 @@ $dark-teal: #16A085;
     position: absolute;
     top: 8px;
     left: 8px;
-    color: white;
+    color: $text-color;
+    font-size: 1.5em;
   }
+}
+
+.edit-button {
+  background-color: $light-yellow;
+}
+
+.remove-item {
+  background-color: $light-red;
+}
+
+.save-item {
+  background-color: $light-green;
+}
+
+.save-item, .remove-item {
+  float: left;
+  margin-right: 8px;
+}
+
+#ingredient-entries {
+  margin-bottom: 20px;
 }
 
 #ingredients-wrapper, #steps-wrapper{
@@ -119,20 +150,44 @@ $dark-teal: #16A085;
   }
 }
 
-/*
- *  Ingredient Entries
- */
+.add-item-tab.mobile {
+  position: relative;
+  top: -70px;
+  -webkit-transition: top .5s ease-out;
+  -moz-transition: top .5s ease-out;
+  -o-transition: top .5s ease-out;
+  transition: top .5s ease-out;
+  z-index: 0;
+}
+
+.add-item-wrapper {
+  background-color: $light-teal;
+  margin-bottom: 20px;
+  border-radius: 6px;
+
+  p {
+    margin-bottom: 0px;
+  }
+
+  .glyphicon {
+    font-size: 1.5em;
+  }
+}
+
+.ingredients-wrapper:hover .add-item-tab,
+.steps-wrapper:hover .add-item-tab {
+  top: 0px;
+}
+
+/*  Ingredient Entries */
+
 
 .ingredient-entry {
   position: relative;
 
-  .entry-main {
-    z-index: 2;
-  }
-
   .edit-entry-tab {
     position: relative;
-    left: -120px;
+    left: -150px;
     text-align: center;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
@@ -144,22 +199,24 @@ $dark-teal: #16A085;
     .edit-entry {
       padding: 6px 0;
       float: right;
-      margin-top: 10px;
-      margin-bottom: 11px;
+      margin-top: 8px;
+      margin-bottom: 8px;
     }
   }
 }
 
 .ingredient-entry:hover .edit-entry-tab {
-  left: -40px;
+  left: -67px;
 }
 
-.ingredient-entry:first-child .entry-main{
+.ingredient-entry:first-child .entry-main,
+.ingredient-entry:first-child .entry-inputs {
   border-top-right-radius: 6px;
   border-top-left-radius: 6px;
 }
 
-.ingredient-entry:last-child .entry-main{
+.ingredient-entry:last-child .entry-main,
+.ingredient-entry:last-child .entry-inputs {
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
@@ -168,9 +225,18 @@ $dark-teal: #16A085;
   margin-left: 10px;
 }
 
-/*
- *  Steps
- */
+.entry-inputs {
+  background-color: #fff;
+  .col-md-2, .col-md-6 {
+    padding: 8px 2px;
+  }
+}
+
+.entry-edit-buttons {
+  margin-top: 5px;
+}
+
+/*  Steps  */
 
 .step-main {
   padding-top: 20px;
@@ -179,17 +245,8 @@ $dark-teal: #16A085;
 }
 
 .recipe-step {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
-
-//
-// .edit-button {
-//   display: none;
-// }
-//
-// .ingredient-entry:hover .edit-button, .recipe-step:hover .edit-button {
-//   display: inline-block;
-// }
 
 .edit-ingredient, .edit-amount {
   padding-left: 0px;
@@ -233,9 +290,7 @@ $dark-teal: #16A085;
 }
 
 
-/*
- * Timer
- */
+/*  Timer  */
 
  .step-timer {
    position: relative

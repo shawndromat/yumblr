@@ -1,15 +1,17 @@
-<div class="entry-main col-md-9">
-  <div class="edit-ingredient editable">
-      <p><%= entry.escape('amount') %>
-      <%= entry.escape('fraction') %>
-      <%= entry.escape('unit_display') %>
-      <span class="ingredient-name"><%= entry.escape('ingredient_name') %></span>
-      </p>
+<span class="editable">
+  <div class="entry-main col-md-9">
+    <div class="edit-ingredient">
+        <p><%= entry.escape('amount') %>
+        <%= entry.escape('fraction') %>
+        <%= entry.escape('unit_display') %>
+        <span class="ingredient-name"><%= entry.escape('ingredient_name') %></span>
+        </p>
+    </div>
   </div>
-</div>
 
-<div class="col-md-2 edit-entry-tab">
-  <div type="button" class="edit-entry edit-button">
-    <span class="glyphicon glyphicon-pencil"></span>
+  <div class="col-md-2 edit-entry-tab">
+    <div type="button" class="edit-entry edit-button">
+      <span class="glyphicon glyphicon-pencil"></span>
+    </div>
   </div>
-</div>
+</span>

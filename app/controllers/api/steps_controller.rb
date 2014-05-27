@@ -26,7 +26,7 @@ module Api
 
     private
     def step_params
-      params.require(:step).permit(:body, :id, :rank, :recipe_id)
+      params.require(:step).permit(:body, :id, :rank, :recipe_id, :timer)
     end
   end
 end

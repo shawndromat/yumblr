@@ -1,7 +1,22 @@
 <div class="edit-component">
   <div class="col-md-10 step-body">
-    <textarea
-    class='step-form editable form-control'><%= step.escape("body") %></textarea>
+    <div class="row">
+      <textarea
+      rows="4"
+      class='step-form editable form-control'><%= step.escape("body") %></textarea>
+    </div>
+
+    <div class="row">
+      <div class="add-timer btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span>timer
+      </div>
+      <div class="add-video btn btn-default">
+        <span class="glyphicon glyphicon-plus"></span>video
+      </div>
+    </div>
+
+    <div class="timer-form"></div>
+    <div class="video-form"></div>
   </div>
   <div class="col-md-1 remove-item">
     <span class="glyphicon glyphicon-remove"></span>

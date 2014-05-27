@@ -1,23 +1,23 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar" role="navigation">
   <div class="container-fluid">
 
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Yumblr</a>
+      <!-- <img src="/assets/images/logo.png" alt="yumblr logo" /> -->
+      <%= image_tag("logo.gif", height: "60") %>
+      <!-- <a class="navbar-brand" href="#">Yumblr</a> -->
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
+        <!-- <% if current_user %>
           <li>
             <p class="navbar-text">
               You are signed in as <%= current_user.username %>
             </p>
           </li>
-          <li>
-            <%= button_to "Log Out", session_url, class: "btn btn-default navbar-btn pull-right", method: :delete %>
-          </li>
-        <% else %>
-          <li>
+
+        <% else %> -->
+          <!-- <li>
             <a data-toggle="modal"
                data-target="#auth-modal"
                id="sign-in-link">Sign In</a>
@@ -27,7 +27,13 @@
                data-target="#auth-modal"
                id="sign-up-link">Sign Up</a>
           </li>
-        <% end %>
+        <% end %> -->
+          <li><%= image_tag("home_icon.gif", height: "40") %></li>
+          <li>
+            <%= button_to "", session_url, class: "pull-right",
+                  id: "logout-button", method: :delete %>
+          </li>
+          <!-- <li><%= image_tag("logout_icon.gif", height: "40") %></li> -->
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

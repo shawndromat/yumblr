@@ -16,7 +16,53 @@
  *= require_tree .
  */
 
+@font-face {
+    font-family: 'tumblr-icons';
+    src:font-url('fonts/tumblr-icons-v12.eot');
+    src:font-urlurl('fonts/tumblr-icons-v12.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$body-bg: #28C1A3;
+
 @import "bootstrap";
+
+.navbar {
+  height: 75px;
+  width: 940px;
+  margin: 0 auto;
+
+  .navbar-header img {
+    margin-top: 5px;
+  }
+
+  .navbar-nav {
+    margin-top: 10px;
+
+    li {
+      margin: 0 5px;
+
+      #logout-button {
+        border: none;
+        width: 40px;
+        height: 40px;
+        background-image: image-url("logout_icon.gif");
+        background-color: transparent;
+        background-size: cover;
+      }
+    }
+  }
+}
+
+
+
+#content {
+  background-color: #16A085;
+  padding: 20px;
+  border-radius: 15px;
+  width: 900px;
+}
 
 /*
  *  Recipe Index
@@ -61,6 +107,10 @@
  *  Recipe Show
  */
 
+.recipe-show {
+  width: 860px;
+}
+
 .recipe-header {
 
   h2 {
@@ -82,9 +132,9 @@
   }
 }
 
-.edit-button, .remove-item,
-.play-button, .close-timer,
-.restart-timer {
+.edit-button, .remove-item {
+// .close-timer, .restart-timer, .play-button
+
   width: 30px;
   height: 30px;
   background-color: #ccc;
@@ -202,6 +252,23 @@
   margin-left: 10px;
 }
 
+.add-annotation {
+  height: 40px;
+  background-color: #ccc;
+  color: #fff;
+  display: inline-block;
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+
+  .glyphicon {
+    font-size: 2em;
+    margin-top: 7px;
+    display: inline-block;
+  }
+}
+
+
 /*
  * Timer
  */
@@ -213,7 +280,7 @@
  .timer-cover {
    background-color: #000;
    border-radius: 10px;
-   width: 135px;
+   width: 100%;
    height: 50px;
    margin-left: 15px;
    color: #fff;

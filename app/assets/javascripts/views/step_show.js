@@ -1,4 +1,4 @@
-window.Yumblr.Views.StepShow = Backbone.View.extend({
+window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   className: "row recipe-step",
   initialize: function (options) {
     this.triggerForm = options.triggerForm;
@@ -8,11 +8,10 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
   formTemplate: JST["steps/step_show_form"],
   events: {
     "click .edit-step": "editStep",
-    "mouseleave .edit-component": "saveStep",
+    // "mouseleave .recipe-step": "saveStep",
     "click .remove-item": "removeStep",
-    "click .glyphicon-time": "addTimer",
-    "click .close-timer": "showHideTimer",
-    "click .restart-timer": "restartTimer"
+    "click .show-timer": "addTimer",
+    "click .add-timer": "addTimerForm"
   },
   render: function () {
     $(this.el).attr("data-step-id", this.model.id);
@@ -21,12 +20,15 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
     if (this.triggerForm) {
       this.editStep();
     }
+    this.attachSubviews();
+
     return this;
   },
   editStep: function (event) {
     var content = this.formTemplate({step: this.model});
     this.$(".editable").html(content);
     this.$(".step-form").focus();
+    this.$(".edit-button").hide();
   },
   saveStep: function (event) {
     var attrs = {
@@ -58,45 +60,41 @@ window.Yumblr.Views.StepShow = Backbone.View.extend({
     }
   },
   addTimer: function () {
-    var timerTemplate = JST["steps/step_timer"];
-    var content = timerTemplate();
-    this.$(".step-timer-wrapper").html( content );
-    this.$timer = this.$(".step-timer")
-    this.startTimer();
-
-    var view = this;
-    this.$(".play-button").click(function () {
-      view.$timer.countdown("toggle");
-      var $glyph = $(this).find(".glyphicon")
-      $glyph.toggleClass("glyphicon-pause");
-      $glyph.toggleClass("glyphicon-play");
-    })
+    if (!this.subviews()[".step-timer-wrapper"]) {
+      var timerShow = new Yumblr.Views.TimerShow({model: this.model});
+      this.addSubview(".step-timer-wrapper", timerShow);
+    }
+    this.render();
   },
-  showHideTimer: function () {
-    this.$(".step-timer-wrapper").empty();
+  addTimerForm: function (event) {
+    event.preventDefault();
+    if (!this.subviews()[".timer-form"]) {
+      var timerForm = new Yumblr.Views.TimerForm({
+        model: this.model,
+        parent: this
+      });
+      this.addSubview(".timer-form", timerForm);
+    }
+    this.triggerForm = true;
+    this.render();
   },
-  startTimer: function () {
-    var time = parseInt(this.model.escape("timer"));
-    var view = this;
-    this.$timer.countdown({
-      until: +5,
-      compact: true,
-      description: "",
-      onExpiry: view.expireTimer.bind(view)
-    });
-    this.$timer.countdown("pause");
+  addVideo: function () {
+    if (!this.subviews()[".step-video-wrapper"]) {
+      var videoShow = new Yumblr.Views.VideoShow({model: this.model});
+      this.addSubview(".step-video-wrapper", videoShow);
+    }
+    this.render();
   },
-  restartTimer: function () {
-    this.$(".timer-cover").removeClass("flash");
-    this.$timer.countdown("destroy");
-    this.startTimer();
-    this.$(".play-button span").removeClass("glyphicon-pause");
-    this.$(".play-button span").addClass("glyphicon-play");
-    this.$(".timer-cover").removeClass("flash");
-  },
-  expireTimer: function () {
-    this.$(".timer-cover").addClass("flash");
-    this.$(".play-button span").removeClass("glyphicon-pause");
-    this.$(".play-button span").addClass("glyphicon-play");
+  addVideoForm: function (event) {
+    event.preventDefault();
+    if (!this.subviews()[".video-form"]) {
+      var videoForm = new Yumblr.Views.VideoForm({
+        model: this.model,
+        parent: this
+      });
+      this.addSubview(".video-form", videoForm)
+    }
+    this.triggerForm = true;
+    this.render();
   }
 })

@@ -1,5 +1,5 @@
 window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
-  className: "recipe-show",
+  className: "recipe-show col-md-12 col-lg-12",
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.steps(), "add", this.addStep);

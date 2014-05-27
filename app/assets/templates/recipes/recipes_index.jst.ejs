@@ -1,4 +1,3 @@
-<!-- <div class="col-md-10 col-md-offset-1"> -->
   <div class="recipes-index col-md-10">
       <% recipes.each(function (recipe) { %>
         <div class="row recipe-wrapper">
@@ -13,7 +12,7 @@
 
           <div class="col-md-8">
             <div class="index-card">
-              <img class="recipe-img"
+              <img class="recipe-img img-responsive"
                     src="<%= recipe.escape('photo_url') %>"
                     alt="<%= recipe.escape('title') %>" />
             </div>
@@ -22,4 +21,3 @@
 
       <% }) %>
   </div>
-<!-- </div> -->

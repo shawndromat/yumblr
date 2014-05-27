@@ -1,0 +1,78 @@
+$text-color: #2C3E50;
+
+$light-teal: #28C1A3;
+$dark-teal: #16A085;
+
+/*
+ *  Recipe Index
+ */
+.recipes-index {
+  .recipe-wrapper {
+    margin: 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .title-card:hover {
+    text-decoration: none;
+  }
+
+  .index-card {
+    max-width: 500px;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #fff;
+
+    .recipe-img {
+      float: left;
+      width: 460px;
+      margin: 20px;
+      border-radius: 6px;
+    }
+  }
+}
+
+.recipe-show {
+  margin: 20px;
+}
+
+.title-card, .bubble {
+  border: 1px solid white;
+  color: #2C3E50;
+  min-height: 150px;
+  border-radius: 6px;
+  display: block;
+  width: 90%;
+  padding: 20px;
+  position: relative;
+
+  h4 {
+    margin-top: 15px;
+  }
+}
+
+.title-card {
+  background-color: #fff;
+}
+
+.bubble {
+  background-color: $light-teal;
+  border: 1px solid $light-teal;
+}
+
+
+
+.title-card:after, .bubble:after {
+  content: "";
+  position: absolute;
+  top: 25px;
+  right: -15px;
+  border-style: solid;
+  border-width: 15px 0 15px 15px;
+  border-color: transparent inherit;
+  display: block;
+  width: 0;
+  z-index: 1;
+}

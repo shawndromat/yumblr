@@ -4,7 +4,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
 
     this.listenTo(this.model, "sync", this.render);
   },
-  className: "row ingredient-entry",
+  className: "ingredient-entry row",
   template: JST["ingredient_entries/ingredient_entry_show"],
   formTemplate: JST["ingredient_entries/ingredient_entry_form"],
   events: {

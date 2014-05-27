@@ -27,5 +27,9 @@
 
 <%= yield %>
 
+
+<script type="text/javascript" charset="utf-8">
+  currentUserId = <%= current_user.try(:id) %>
+</script>
 </body>
 </html>

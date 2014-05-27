@@ -1,0 +1,306 @@
+$text-color: #2C3E50;
+
+$light-teal: #28C1A3;
+$dark-teal: #16A085;
+/*
+ *  Recipe Show
+ *  ===========
+ */
+
+/*
+ *  Header
+ */
+.recipe-header {
+
+  h2 {
+    display: inline-block;
+  }
+
+  .edit-button {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  .recipe-title .form-control {
+    height: 50px;
+    font-size: 1em;
+  }
+
+  .edit-recipe {
+    margin: 0 0 10px 10px;
+  }
+}
+
+#recipe-show-img {
+  img {
+    max-width: 500px;
+    max-height: 500px;
+  }
+}
+
+.img-form, .img-placeholder {
+  width: 325px;
+  height: 325px;
+  background-color: #ccc;
+  text-align: center;
+  color: #fff;
+
+  .form-group {
+    padding-top: 90px;
+    font-size: 1.5em;
+  }
+}
+
+#recipe-show-img img, .img-form, .img-placeholder {
+  border-radius: 20px;
+}
+
+#recipe-show-img:hover {
+  position: relative;
+
+  .img-placeholder {
+    background-color: #ddd;
+    position: relative;
+  }
+
+  .edit-button {
+    display: inline-block;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.75em;
+  }
+}
+
+/*
+ *  Components
+ */
+
+.entry-main, .step-main, .edit-entry-tab {
+ background-color: #fff;
+}
+
+.edit-button, .remove-item {
+// .close-timer, .restart-timer, .play-button
+
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
+
+  .glyphicon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    color: white;
+  }
+}
+
+#ingredients-wrapper, #steps-wrapper{
+  .add-item-wrapper {
+    text-align: center;
+
+    .show-add-item {
+      visibility: hidden;
+      color: #ccc;
+      font-size: 2em;
+    }
+  }
+}
+
+#ingredients-wrapper:hover, #steps-wrapper:hover{
+
+  .show-add-item {
+    visibility: visible;
+  }
+}
+
+/*
+ *  Ingredient Entries
+ */
+
+.ingredient-entry {
+  position: relative;
+
+  .entry-main {
+    z-index: 2;
+  }
+
+  .edit-entry-tab {
+    position: relative;
+    left: -120px;
+    text-align: center;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    -webkit-transition: left .3s ease-out;
+    -moz-transition: left .3s ease-out;
+    -o-transition: left .3s ease-out;
+    transition: left .3s ease-out;
+
+    .edit-entry {
+      padding: 6px 0;
+      float: right;
+      margin-top: 10px;
+      margin-bottom: 11px;
+    }
+  }
+}
+
+.ingredient-entry:hover .edit-entry-tab {
+  left: -40px;
+}
+
+.ingredient-entry:first-child .entry-main{
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+.ingredient-entry:last-child .entry-main{
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+.edit-entry {
+  margin-left: 10px;
+}
+
+/*
+ *  Steps
+ */
+
+.step-main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-radius: 6px;
+}
+
+.recipe-step {
+  margin-bottom: 30px;
+}
+
+//
+// .edit-button {
+//   display: none;
+// }
+//
+// .ingredient-entry:hover .edit-button, .recipe-step:hover .edit-button {
+//   display: inline-block;
+// }
+
+.edit-ingredient, .edit-amount {
+  padding-left: 0px;
+}
+
+.recipe-body {
+  margin-top: 30px;
+  margin-bottom: 60px;
+
+  p  {
+    padding: 10px 0;
+    font-size: 1.5em;
+    display: inline-block;
+  }
+
+  .ingredient-entry {
+    p {
+      padding: 5px 0 5px 0;
+    }
+    height: 50px;
+    .ingredient-name {
+      font-weight: bold;
+    }
+  }
+}
+
+.add-annotation {
+  height: 40px;
+  background-color: #ccc;
+  color: #fff;
+  display: inline-block;
+  border-radius: 5px;
+  position: relative;
+  text-align: center;
+
+  .glyphicon {
+    font-size: 2em;
+    margin-top: 7px;
+    display: inline-block;
+  }
+}
+
+
+/*
+ * Timer
+ */
+
+ .step-timer {
+   position: relative
+ }
+
+ .timer-cover {
+   background-color: #000;
+   border-radius: 10px;
+   width: 100%;
+   height: 50px;
+   margin-left: 15px;
+   color: #fff;
+   visibility: hidden;
+   z-index: 1;
+   position: absolute;
+   top: 0;
+   left: 0;
+ }
+
+ .timer-controls {
+   .play-button, .close-timer, .restart-timer {
+     display: inline-block;
+   }
+ }
+
+ @-webkit-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-moz-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-ms-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @-o-keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ @keyframes flash {
+   0%, 50%, 100% {opacity: 1;}
+   25%, 75% {opacity: 0;}
+ }
+
+ .flash {
+   visibility: visible;
+   -webkit-animation-duration: 1.5s;
+   -moz-animation-duration: 1.5s;
+   -ms-animation-duration: 1.5s;
+   -o-animation-duration: 1.5s;
+   animation-duration: 1.5s;
+   -webkit-animation-name: flash;
+   -moz-animation-name: flash;
+   -ms-animation-name: flash;
+   -o-animation-name: flash;
+   animation-name: flash;
+   -webkit-animation-iteration-count: 3;
+   -moz-animation-iteration-count: 3;
+   -ms-animation-iteration-count: 3;
+   -o-animation-iteration-count: 3;
+   animation-iteration-count: 3;
+ }

@@ -8,7 +8,8 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#"><%= image_tag("home_icon.gif", height: "40") %></a>
+            <%= button_to "", root_url, class: "pull-right",
+                  id: "home-button", method: :get %>
           </li>
           <li>
             <%= button_to "", session_url, class: "pull-right",

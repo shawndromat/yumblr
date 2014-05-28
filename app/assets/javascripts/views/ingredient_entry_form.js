@@ -1,5 +1,5 @@
 window.Yumblr.Views.IngredientEntryForm = Backbone.View.extend({
-  className: "row",
+  className: "row entry-main ingredient-entry",
   template: JST["ingredient_entries/ingredient_entry_form"],
   events: {
     "click .remove-item": "remove"

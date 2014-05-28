@@ -6,12 +6,13 @@ module Api
       @recipes = Recipe.all
       respond_to do |format|
         format.html
-        format.json { render "api/recipes/index", locals: { recipes: @recipes } }
+        format.json { render jbuilder: @recipes }
       end
     end
 
     def create
-      @recipe = current_or_guest_user.owned_recipes.new(recipe_params)
+      @recipe = current_user.owned_recipes.new(recipe_params)
+
       if @recipe.save
         render json: @recipe
       else

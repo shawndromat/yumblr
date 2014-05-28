@@ -6,10 +6,20 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right plain-navbar">
           <li>
             <%= button_to "", root_url, class: "pull-right",
                   id: "home-button", method: :get %>
+          </li>
+          <li>
+            <a href="#recipes/new">
+              <button><span class="glyphicon glyphicon-plus"></span></button>
+            </a>
+          </li>
+          <li>
+            <a href="#recipes/cookbook">
+              <button><span class="glyphicon glyphicon-book"></span></button>
+            </a>
           </li>
           <li>
             <%= button_to "", session_url, class: "pull-right",

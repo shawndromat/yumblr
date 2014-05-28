@@ -66,16 +66,16 @@ $light-pink: #FFB4F7;
 }
 
 .img-form, .img-placeholder {
-  width: 325px;
-  height: 325px;
-  background-color: #ccc;
+  width: 90%;
+  height: 100px;
+  background-color: $light-teal;
   text-align: center;
-  color: #fff;
-
-  .form-group {
-    padding-top: 90px;
-    font-size: 1.5em;
-  }
+    .form-group {
+      font-size: 1.5em;
+      input {
+        height: 40px;
+      }
+    }
 }
 
 #recipe-show-img img, .img-form, .img-placeholder {
@@ -84,11 +84,6 @@ $light-pink: #FFB4F7;
 
 #recipe-show-img:hover {
   position: relative;
-
-  .img-placeholder {
-    background-color: #ddd;
-    position: relative;
-  }
 
   .edit-button {
     visibility: visible;

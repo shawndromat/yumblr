@@ -2,30 +2,38 @@
 
 <div class="auth">
   <%= image_tag("logo.gif", width: "100%") %>
-  <h3>food meets rap genius</h3>
 
-  <%= button_to "log in as guest", session_guest_sign_in_url,
-        method: :get, class: "auth-button guest-sign-in" %>
+  <div class="auth-box">
 
-  <form action="<%= users_url %>" method="post" class="form-horizontal">
-    <%= form_auth_token %>
-    <div class="form-group">
-      <input class="form-control"
-             placeholder="username"
-             name="user[username]">
-    </div>
+    <h3>food meets rap genius</h3>
 
-    <div class="form-group">
-      <input type="password" class="form-control"
-             placeholder="password"
-             name="user[password]">
+    <%= button_to "log in as guest", session_guest_sign_in_url,
+          method: :get, class: "auth-button guest-sign-in" %>
 
-      <input type="submit" value="sign up" class="auth-button">
-    </div>
+    <form action="<%= users_url %>" method="post" class="form-horizontal">
+      <%= form_auth_token %>
+      <div class="form-group">
+        <input class="form-control"
+               placeholder="username"
+               name="user[username]">
+      </div>
 
-    <p>
-      already a member? <%= link_to "sign in", new_session_url %>
-    </p>
-  </form>
+      <div class="form-group">
+        <input type="password" class="form-control"
+               placeholder="password"
+               name="user[password]">
+
+        <input type="submit" value="sign up" class="auth-button">
+      </div>
+
+      <p>
+        already a member? <%= link_to "sign in", new_session_url %>
+      </p>
+    </form>
+
+
+    
+  </div>
+
 
 </div>

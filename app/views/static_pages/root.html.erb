@@ -1,2 +1,9 @@
 <div id="content" class="container-fluid">
 </div>
+
+<% content_for :user_script do%>
+<script type="text/javascript" charset="utf-8">
+  currentUserId = <%= current_user.try(:id) %>;
+  currentUser = "<%= current_user.try(:username) %>";
+</script>
+<% end %>

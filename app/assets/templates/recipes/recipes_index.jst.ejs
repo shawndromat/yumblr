@@ -1,11 +1,17 @@
   <div class="recipes-index col-md-10">
+
+      <div id="index-nav" class="btn-group">
+              <a href="#" class="btn btn-large btn-info">All Recipes</a>
+              <a href="#mycookbook" class="btn btn-large btn-info">My Recipes</a>
+            </div>
+
       <% recipes.each(function (recipe) { %>
         <div class="row recipe-wrapper">
           <div class="col-md-4">
             <a href="#recipes/<%= recipe.escape('id') %>">
               <div class="title-card">
                 <h3><%= recipe.escape("title") %></h3>
-                <% if (currentUserId === recipe.escape("owner_id")) { %>
+                <% if (currentUserId === parseInt(recipe.escape("owner_id"))) { %>
                   <h4>added by you!</h4>
                 <% } else { %>
                   <h4>added by <%= recipe.escape("owner") %></h4>
@@ -15,11 +21,13 @@
           </div>
 
           <div class="col-md-8">
+            <a href="#recipes/<%= recipe.escape('id') %>">
             <div class="index-card">
               <img class="recipe-img img-responsive"
                     src="<%= recipe.escape('photo_url') %>"
                     alt="<%= recipe.escape('title') %>" />
             </div>
+          </a>
           </div>
         </div>
 

@@ -12,5 +12,5 @@ window.Yumblr.Collections.Recipes = Backbone.Collection.extend({
       this.add(recipe);
       return recipe;
     }
-  }
+  },
 });

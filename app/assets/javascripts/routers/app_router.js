@@ -6,12 +6,25 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     "": "recipeIndex",
     "recipes/new": "recipeNew",
     "recipes/:id/edit": "recipeEdit",
-    "recipes/:id": "recipeShow"
+    "recipes/:id": "recipeShow",
+    "mycookbook": "cookbookIndex"
   },
   recipeIndex: function () {
     Yumblr.recipes.fetch();
     var indexView = new Yumblr.Views.RecipesIndex({
       collection: Yumblr.recipes
+    });
+    this._swapView(indexView);
+  },
+  cookbookIndex: function () {
+    var router = this;
+    Yumblr.recipes.fetch({
+      success: function () {
+        Yumblr.currentUserRecipes.set(router.setUserRecipes(currentUserId));
+      }
+    });
+    var indexView = new Yumblr.Views.RecipesIndex({
+      collection: Yumblr.currentUserRecipes
     });
     this._swapView(indexView);
   },
@@ -45,5 +58,11 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     }
     this.currentView = view;
     this.$rootEl.html(this.currentView.render().$el);
-  }
+  },
+  setUserRecipes: function (userId) {
+    var recipes = _.filter(Yumblr.recipes.models, function (recipe) {
+      return parseInt(recipe.get("owner_id")) === userId;
+    })
+    return recipes;
+  },
 });

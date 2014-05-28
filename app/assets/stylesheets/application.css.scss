@@ -13,10 +13,7 @@
  *= require_self
  *= require jquery.ui.datepicker
  *= require jquery.countdown.css
- *= require recipe_index.css
- *= require recipe_form.css
- *= require recipe_show.css
- *= require auth.css
+ *= require_tree .
  */
 
 $text-color: #2C3E50;
@@ -53,6 +50,19 @@ body:after {
 
     li {
       margin: 0 5px;
+
+      a {
+        padding: 0;
+      }
+
+      button {
+        border: none;
+        width: 40px;
+        height: 40px;
+        background-color: transparent;
+        font-size: 2em;
+        color: #fff;
+      }
 
       #logout-button, #home-button {
         border: none;
@@ -93,35 +103,9 @@ body:after {
 .button:after {
   font-family: "Glyphicons Halflings";
 }
-// /*
-//  * Auth Modal
-//  */
-//
-// .modal-dialog {
-//   margin-top: 60px;
-// }
-//
-// .modal-content {
-//   padding: 30px;
-// }
-//
-// .modal-body .form-control {
-//   width: 300px;
-// }
-//
-// .modal-body form {
-//   margin-top: 30px;
-// }
-//
-// .modal-footer {
-//   margin-top: 30px;
-//   p, .btn {
-//     margin: auto;
-//   }
-// }
-//
-// @media screen and (min-width: 1300px) {
-//   .navbar, #content {
-//     width: 1100px;
-//   }
-// }
+
+@media screen and (min-width: 1300px) {
+  .navbar, #content {
+    width: 1100px;
+  }
+}

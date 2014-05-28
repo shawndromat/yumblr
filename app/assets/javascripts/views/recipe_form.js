@@ -16,9 +16,6 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var content = this.template({recipe: this.model});
     this.$el.html(content);
     this.attachSubviews();
-    setTimeout(function () {
-      $('.title-input').focus().val("Recipe Title");
-    }, 100);
     // later feature
     // this.$('#recipe-steps').sortable();
     // this.$('#ingredient-entries').sortable();
@@ -27,14 +24,17 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   addStepForm: function () {
     var rank = this.$(".step-form").length + 1;
     var step = new Yumblr.Models.Step({rank: rank, recipe: this.model});
-    var stepForm = new Yumblr.Views.StepForm({model: step});
+    var stepForm = new Yumblr.Views.StepForm({
+      model: step,
+      parent: this
+    });
     this.addSubview("#recipe-steps", stepForm);
   },
   addEntryForm: function () {
     var rank = this.$(".entry-form").length + 1;
     var entry = new Yumblr.Models.IngredientEntry({rank: rank});
     var ingredientForm = new Yumblr.Views.IngredientEntryForm({model: entry});
-    this.addSubview("#ingredient-entries", ingredientForm);
+    this.addSubview("#new-ingredients", ingredientForm);
   },
   submit: function (event) {
     event.preventDefault();
@@ -44,6 +44,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
       success: function (model) {
         if (model.isNew()) {
           Yumblr.recipes.add(model);
+          Yumblr.currentUserRecipes.add(model);
         }
         Backbone.history.navigate("recipes/" + model.id, {trigger: true})
       }

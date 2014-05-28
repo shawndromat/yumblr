@@ -24,8 +24,8 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     var form = this.formTemplate({entry: this.model});
     this.$el.html(form);
     this.$(".edit-button").hide();
-    this.$(".unit-select").val((this.model.get("unit") || "cup"));
-    this.$(".fraction-select").val((this.model.get("fraction") || "1/2"));
+    this.$(".unit-select").val((this.model.get("unit") || "unit"));
+    this.$(".fraction-select").val((this.model.get("fraction") || "fraction"));
     this.$(".entry-ingredient").focus();
   },
   saveEntry: function () {
@@ -37,6 +37,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
       ingredient_name: this.$(".entry-ingredient").val(),
       recipe_id: this.model.recipe.id
     }
+    debugger
     if (attrs.ingredient_name) {
       this.model.set(attrs);
       var view = this;

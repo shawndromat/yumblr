@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }, on: :create
   before_validation :ensure_session_token
 
-  has_many :owned_recipes, class_name: "Recipe"
+  has_many :owned_recipes, class_name: "Recipe", foreign_key: :owner_id
 
   def self.find_by_credentials(creds)
     user = User.find_by_username(creds[:username])

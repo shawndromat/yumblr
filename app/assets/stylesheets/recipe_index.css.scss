@@ -1,11 +1,13 @@
 $text-color: #2C3E50;
 $light-teal: #28C1A3;
 $dark-teal: #16A085;
+$light-blue: #B4F9FF;
 
 /*
  *  Recipe Index
  */
 .recipes-index {
+
   .recipe-wrapper {
     margin: 20px;
   }
@@ -19,7 +21,6 @@ $dark-teal: #16A085;
   }
 
   .index-card {
-    // max-width: 500px;
     overflow: hidden;
     border-radius: 6px;
     background-color: #fff;
@@ -29,6 +30,15 @@ $dark-teal: #16A085;
       width: 90%;
       margin: 5%;
       border-radius: 6px;
+    }
+  }
+
+  #index-nav {
+    margin-left: 50px;
+    .btn {
+      padding: 10px 20px;
+      margin-bottom: 20px;
+      font-size: 1.5em;
     }
   }
 }
@@ -48,7 +58,7 @@ $dark-teal: #16A085;
   border-radius: 6px;
   display: block;
   width: 90%;
-  margin: 5%;
+  margin: 0 5%;
   padding: 20px;
   position: relative;
 

@@ -5,6 +5,7 @@ window.Yumblr = {
   Routers: {},
   initialize: function() {
     Yumblr.recipes = new Yumblr.Collections.Recipes();
+    Yumblr.currentUserRecipes = new Yumblr.Collections.Recipes();
     new Yumblr.Routers.AppRouter({
       $rootEl: $("#content"),
     });
@@ -67,13 +68,15 @@ Backbone.CompositeView = Backbone.View.extend({
     subviews.splice(subviews.indexOf(subview), 1);
     subview.remove();
   },
-  clearSubviews: function (selector) {
-    _(this.subviews()[selector]).each(function (subview) {
-      subview.remove();
+  saveRanks: function (selector) {
+    var element = $(selector);
+    this.subviews()[selector].each(function (subview) {
+      var index = element.indexOf(subview.$el);
+      debugger
+      if (subview.model.get('rank') !== element.indexOf(subview.$el)) {
+        subview.model.set('rank', index);
+        subview.save();
+      }
     })
-    this.subviews()[selector] = undefined;
-  },
-  isEmpty: function (selector) {
-    return ((!this.subviews()[selector]) || (this.subviews()[selector].length === 0));
   }
 })

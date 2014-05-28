@@ -1,65 +1,52 @@
 
+
 <form class="form-horizontal col-lg-10 col-lg-offset-1">
+  <div id="form-title" class="col-md-3">
+    <h1 class="bubble">New Recipe</h1>
+  </div>
+  <div id="form-header" class="col-md-9">
     <div class="form-group">
-      <div class="col-md-3">
-        <label for="recipe_title"
-        class="control-label bubble">Title</label>
-      </div>
-      <div class="col-md-9">
         <input class="form-control title-input"
-               name="recipe[title]" value="Recipe Title" id="recipe_title">
-      </div>
+               placeholder="recipe title"
+               name="recipe[title]" id="recipe_title">
     </div>
 
     <div class="form-group">
-      <div class="col-md-3">
-        <label for="recipe_photo_url"
-               class="control-label bubble">Photo URL</label>
-      </div>
-      <div class="col-md-9">
         <input class="form-control" id="recipe_photo_url"
+               placeholder="photo url"
                name="recipe[photo_url]">
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <h3 class="bubble">Ingredients</h3>
+  </div>
+
+  <div class="col-md-9">
+    <div id="new-ingredients"></div>
+    <div class=row>
+      <div class="add-entry add-item col-lg-12">
+        <span class="glyphicon glyphicon-plus-sign"></span>
       </div>
     </div>
-</div>
-<!-- <div class="recipe-body row"> -->
-  <!-- <div class="col-lg-4">
-    <div class="img-form">
+  </div>
 
-      <div class="form-group row">
-        <p>Add a photo url</p>
-        <div class="col-md-10 col-md-offset-1">
-          <input id="photo-input"
-                 class="form-control"
-                 name="recipe[photo_url]"
-                 value="<%= recipe.escape('photo_url') %>">
-        </div>
-      </div>
-    </div>
-  </div> -->
+  <div class="col-md-3">
+    <h3 class="bubble">Directions</h3>
+  </div>
 
-  <div class="col-lg-8 col-lg-offset-2">
-
-    <h3>Ingredients</h3>
-      <div id="ingredient-entries"></div>
-      <div class=row>
-        <div class="add-entry add-item col-lg-12">
-          <span class="glyphicon glyphicon-plus-sign"></span>
-        </div>
-      </div>
-
-    <h3>Directions</h3>
+  <div class="col-md-9">
     <div id="recipe-steps"></div>
     <div class=row>
       <div class="add-step add-item col-lg-12">
         <span class="glyphicon glyphicon-plus-sign"></span>
       </div>
     </div>
+  </div>
 
     <div class="col-md-12">
       <input type="submit" id="submit"
              class="btn btn-info btn-lg pull-right" value="Submit Recipe">
     </div>
-  </div>
 </div>
 </form>

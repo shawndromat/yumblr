@@ -13,7 +13,7 @@
 class Recipe < ActiveRecord::Base
   validates :title, :owner, presence: true
   validate :non_default_title
-  belongs_to :owner, class_name: "User"
+  belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
   has_many :steps, inverse_of: :recipe
   has_many :ingredient_entries, inverse_of: :recipe

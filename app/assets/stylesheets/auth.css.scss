@@ -1,19 +1,32 @@
 $text-color: #2C3E50;
 
 #auth-body{
-  background-color: #000;
-  // background-image: image-url("auth1.jpg");
-  // background-size: cover;
+  background-color: transparent;
+  background-image: image-url("auth2.jpg");
+  background-size: cover;
+}
+
+#auth-body:after {
+  display: none;
 }
 
 .auth {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -250px;
-  margin-left: -150px;
-  width: 300px;
-  height: 360px;
+  margin-top: -280px;
+  margin-left: -200px;
+  width: 400px;
+  height: 500px;
+
+  .auth-box {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.7);
+    // width: 400px;
+    // height: 450px;
+    padding: 10px;
+    border-radius: 10px;
+  }
 
   form {
     width: 260px;

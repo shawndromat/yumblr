@@ -1,17 +1,25 @@
+$light-green: #AEFFC2;
+
 /*
  * Recipe Form
  */
 
+.recipe-form h2 {
+  text-align: center;
+}
+
 .recipe-form .form-horizontal {
+
   .add-item {
     text-align: center;
     font-size: 50px;
-    color: #999;
+    color: $light-green;
     margin-top: 10px;
   }
 
-  .edit-component {
-    margin-bottom: 10px;
+  .form-group {
+    text-align: center;
+    font-size: 1.5em;
   }
 
   #submit {
@@ -20,14 +28,50 @@
 
   .control-label.bubble {
     height: 60px;
-    margin-top: 0px;
   }
 
-  .control-label.bubble {
-    top: 10px;
+  .control-label.bubble:before {
+    top: 7px;
+    border-width: 12px 0 12px 15px;
+
   }
 
   .form-control {
     height: 60px;
   }
+}
+
+#new-ingredients .ingredient-entry{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#new-ingredients .ingredient-entry:first-child {
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+}
+
+#new-ingredients .ingredient-entry:last-child {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+#form-header {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 6px;
+  padding: 20px 40px;
+  margin: 40px 0;
+
+  input[placeholder] {
+    font-size: 1.25em;
+  }
+}
+
+
+
+#form-title {
+  text-align: center;
+
+  margin: 40px 0 20px 0;
 }

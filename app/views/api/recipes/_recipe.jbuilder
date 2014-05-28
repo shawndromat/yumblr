@@ -1,7 +1,7 @@
 json.extract! recipe, :title, :photo_url
 
-json.owner_id recipe.owner.id
 json.owner recipe.owner.username
+json.owner_id recipe.owner.id
 
 json.steps recipe.steps, partial: 'api/steps/step', as: :step
 

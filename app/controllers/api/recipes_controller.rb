@@ -6,7 +6,7 @@ module Api
       @recipes = Recipe.all
       respond_to do |format|
         format.html
-        format.json { render json: @recipes }
+        format.json { render "api/recipes/index", locals: { recipes: @recipes } }
       end
     end
 

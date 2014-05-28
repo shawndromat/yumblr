@@ -50,12 +50,6 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
     $glyph.toggleClass("glyphicon-play");
   },
   deleteTimer: function (event) {
-    this.model.set("timer", null);
-    var view = this;
-    this.model.save({},{
-      success: function () {
-        view.parent.removeSubview(".step-timer-wrapper", view);
-      }
-    })
+    this.model.save({step: {timer: null}})
   }
 });

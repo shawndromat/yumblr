@@ -28,14 +28,4 @@ window.Yumblr.Views.TimerForm = Backbone.View.extend({
     this.parent.removeSubview(".timer-form", this);
     this.parent.render();
   }
-  // deleteTimer: function (event) {
-  //   event.preventDefault();
-  //   this.model.set("timer", null);
-  //   var view = this;
-  //   this.model.save({},{
-  //     success: function () {
-  //       view.parent.removeSubview(".timer-form", view);
-  //     }
-  //   });
-  // }
 });

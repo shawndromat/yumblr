@@ -3,6 +3,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     this.addEntryForm();
     this.addStepForm();
   },
+  className: "recipe-form",
   template: JST["recipes/recipe_form"],
   photoTemplate: JST["recipes/photo_form"],
   events: {

@@ -1,6 +1,6 @@
 Yumblr::Application.routes.draw do
-  resources :users, only: [:create]
-  resource :session, only: [:create, :destroy]
+  resources :users, only: [:new, :create]
+  resource :session, only: [:new, :create, :destroy]
 
   get "session/guest_sign_in", to: "sessions#guest_sign_in"
 

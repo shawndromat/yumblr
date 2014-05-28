@@ -18,6 +18,7 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     "click .add-timer": "addTimerForm"
   },
   render: function () {
+    console.log("render" + this.model.id)
     $(this.el).attr("data-step-id", this.model.id);
     var content = this.template({step: this.model});
     this.$el.html(content);

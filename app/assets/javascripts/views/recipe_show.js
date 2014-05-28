@@ -3,7 +3,7 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   initialize: function () {
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.steps(), "add", this.addStep);
-    this.listenTo(this.model.steps(), "sync change", this.render);
+    // this.listenTo(this.model.steps(), "sync", this.render);
     this.listenTo(this.model.steps(), "remove", this.removeStep);
     this.listenTo(this.model.entries(), "add", this.addEntry);
     this.listenTo(this.model.entries(), "sync change remove", this.render);

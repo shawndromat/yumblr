@@ -1,69 +1,74 @@
 .step-timer-wrapper {
   position: relative;
+  padding-top: 10px;
 }
 
- .timer-cover {
-   visibility: hidden;
-   background-color: #ccc;
-   border-radius: 10px;
-   width: 100%;
-   height: 50px;
-   color: #fff;
-   z-index: 4;
-   position: absolute;
-   top: 0;
-   left: 0;
-   p  {
-     margin-left: 28px;
-   }
+.timer-cover {
+ visibility: hidden;
+ background-color: #ccc;
+ border-radius: 10px;
+ width: 100%;
+ height: 50px;
+ color: #fff;
+ z-index: 4;
+ position: absolute;
+ top: 0;
+ left: 0;
+ p  {
+   margin-left: 28px;
  }
+}
 
- .timer-controls {
-   .play-button, .close-timer, .restart-timer {
-     display: inline-block;
-   }
- }
+.delete-timer {
+  float: right;
+}
 
- @-webkit-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
+.timer-controls {
+ .play-button, .close-timer, .restart-timer {
+   display: inline-block;
  }
+}
 
- @-moz-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
+@-webkit-keyframes flash {
+ 0%, 50%, 100% {opacity: 1;}
+ 25%, 75% {opacity: 0;}
+}
 
- @-ms-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
+@-moz-keyframes flash {
+ 0%, 50%, 100% {opacity: 1;}
+ 25%, 75% {opacity: 0;}
+}
 
- @-o-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
+@-ms-keyframes flash {
+ 0%, 50%, 100% {opacity: 1;}
+ 25%, 75% {opacity: 0;}
+}
 
- @keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
+@-o-keyframes flash {
+ 0%, 50%, 100% {opacity: 1;}
+ 25%, 75% {opacity: 0;}
+}
 
- .flash {
-   visibility: visible;
-   -webkit-animation-duration: 1.5s;
-   -moz-animation-duration: 1.5s;
-   -ms-animation-duration: 1.5s;
-   -o-animation-duration: 1.5s;
-   animation-duration: 1.5s;
-   -webkit-animation-name: flash;
-   -moz-animation-name: flash;
-   -ms-animation-name: flash;
-   -o-animation-name: flash;
-   animation-name: flash;
-   -webkit-animation-iteration-count: 3;
-   -moz-animation-iteration-count: 3;
-   -ms-animation-iteration-count: 3;
-   -o-animation-iteration-count: 3;
-   animation-iteration-count: 3;
- }
+@keyframes flash {
+ 0%, 50%, 100% {opacity: 1;}
+ 25%, 75% {opacity: 0;}
+}
+
+.flash {
+ visibility: visible;
+ -webkit-animation-duration: 1.5s;
+ -moz-animation-duration: 1.5s;
+ -ms-animation-duration: 1.5s;
+ -o-animation-duration: 1.5s;
+ animation-duration: 1.5s;
+ -webkit-animation-name: flash;
+ -moz-animation-name: flash;
+ -ms-animation-name: flash;
+ -o-animation-name: flash;
+ animation-name: flash;
+ -webkit-animation-iteration-count: 3;
+ -moz-animation-iteration-count: 3;
+ -ms-animation-iteration-count: 3;
+ -o-animation-iteration-count: 3;
+ animation-iteration-count: 3;
+}

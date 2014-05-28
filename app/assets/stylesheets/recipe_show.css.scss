@@ -124,8 +124,20 @@ $light-pink: #FFB4F7;
   background-color: $light-blue;
 }
 
+.button.edit-btn:after {
+  content: "\270f";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: $text-color;
+  font-size: 1.5em;
+}
+
 .remove-item {
   background-color: $light-red;
+  .glyphicon-trash {
+    left: 6px;
+  }
 }
 
 .save-item {

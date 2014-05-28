@@ -12,10 +12,8 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    // if (!this.$timer) {
-      this.$timer = this.$(".step-timer").first();
-    // }
-    setTimeout(this.startTimer.bind(this), 100);
+    this.$timer = this.$(".timer-" + this.model.id).first();
+    setTimeout(this.startTimer.bind(this), 500);
     return this;
   },
   startTimer: function () {
@@ -50,6 +48,7 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
     $glyph.toggleClass("glyphicon-play");
   },
   deleteTimer: function (event) {
+    this.$timer.countdown("destroy");
     this.model.save({step: {timer: null}})
   }
 });

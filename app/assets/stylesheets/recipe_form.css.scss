@@ -1,0 +1,33 @@
+/*
+ * Recipe Form
+ */
+
+.recipe-form .form-horizontal {
+  .add-item {
+    text-align: center;
+    font-size: 50px;
+    color: #999;
+    margin-top: 10px;
+  }
+
+  .edit-component {
+    margin-bottom: 10px;
+  }
+
+  #submit {
+    margin-bottom: 50px;
+  }
+
+  .control-label.bubble {
+    height: 60px;
+    margin-top: 0px;
+  }
+
+  .control-label.bubble {
+    top: 10px;
+  }
+
+  .form-control {
+    height: 60px;
+  }
+}

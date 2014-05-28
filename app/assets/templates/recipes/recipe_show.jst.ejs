@@ -1,5 +1,5 @@
 <div class="recipe-header row">
-  <div class="col-lg-3 col-md-3">
+  <div class="col-md-3 col-s-10 col-s-offset-1">
     <div class="editable title-card">
       <h2 class="recipe-title"><%= recipe.escape('title') %></h2>
       <div class="edit-title edit-button">
@@ -8,7 +8,7 @@
     </div>
   </div>
 
-  <div class="col-lg-7 col-md-7">
+  <div class="col-md-7 col-s-12">
     <div id="recipe-show-img">
       <% if (recipe.escape('photo_url')) {%>
         <img src="<%= recipe.escape('photo_url') %>"
@@ -30,7 +30,7 @@
 
 <div class="recipe-body">
   <div class="ingredients-wrapper row">
-        <div class="col-md-3 col-lg-3">
+        <div class="col-md-3 col-s-1">
           <div class="bubble">
             <h3>Ingredients</h3>
           </div>

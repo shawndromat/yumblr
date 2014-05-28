@@ -5,7 +5,11 @@
             <a href="#recipes/<%= recipe.escape('id') %>">
               <div class="title-card">
                 <h3><%= recipe.escape("title") %></h3>
-                <h4>by <%= recipe.escape("owner") %></h4>
+                <% if (currentUserId === recipe.escape("owner_id")) { %>
+                  <h4>added by you!</h4>
+                <% } else { %>
+                  <h4>added by <%= recipe.escape("owner") %></h4>
+                <% } %>
               </div>
             </a>
           </div>

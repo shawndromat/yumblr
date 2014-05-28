@@ -13,7 +13,10 @@
  *= require_self
  *= require jquery.ui.datepicker
  *= require jquery.countdown.css
- *= require_tree .
+ *= require recipe_index.css
+ *= require recipe_form.css
+ *= require recipe_show.css
+ *= require auth.css
  */
 
 $text-color: #2C3E50;
@@ -77,58 +80,48 @@ body:after {
   width: 80%;
 }
 
-
-/*
- * Recipe Form
- */
-.title-form {
-  min-width: 100px;
+.button {
+  height: 35px;
+  width: 35px;
+  float: left;
+  margin-right: 8px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 1;
 }
 
-.add-item {
-  text-align: center;
-  font-size: 50px;
-  color: #999;
-  margin-top: 10px;
+.button:after {
+  font-family: "Glyphicons Halflings";
 }
-
-.edit-component {
-  margin-bottom: 10px;
-}
-
-#submit {
-  margin-bottom: 50px;
-}
-
-/*
- * Auth Modal
- */
-
-.modal-dialog {
-  margin-top: 60px;
-}
-
-.modal-content {
-  padding: 30px;
-}
-
-.modal-body .form-control {
-  width: 300px;
-}
-
-.modal-body form {
-  margin-top: 30px;
-}
-
-.modal-footer {
-  margin-top: 30px;
-  p, .btn {
-    margin: auto;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .navbar, #content {
-    width: 1100px;
-  }
-}
+// /*
+//  * Auth Modal
+//  */
+//
+// .modal-dialog {
+//   margin-top: 60px;
+// }
+//
+// .modal-content {
+//   padding: 30px;
+// }
+//
+// .modal-body .form-control {
+//   width: 300px;
+// }
+//
+// .modal-body form {
+//   margin-top: 30px;
+// }
+//
+// .modal-footer {
+//   margin-top: 30px;
+//   p, .btn {
+//     margin: auto;
+//   }
+// }
+//
+// @media screen and (min-width: 1300px) {
+//   .navbar, #content {
+//     width: 1100px;
+//   }
+// }

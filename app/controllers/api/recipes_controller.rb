@@ -1,5 +1,7 @@
 module Api
   class RecipesController < ApiController
+    before_action :require_login
+
     def index
       @recipes = Recipe.all
       respond_to do |format|

@@ -1,16 +1,29 @@
 
-<form>
-<div class="recipe-header row">
-  <div class="col-lg-12">
-    <h2 class="recipe-title">
-      <input class="form-control title-input"
-             name="recipe[title]" value="Recipe Title">
-    </h2>
-  </div>
-</div>
+<form class="form-horizontal col-lg-10 col-lg-offset-1">
+    <div class="form-group">
+      <div class="col-md-3">
+        <label for="recipe_title"
+        class="control-label bubble">Title</label>
+      </div>
+      <div class="col-md-9">
+        <input class="form-control title-input"
+               name="recipe[title]" value="Recipe Title" id="recipe_title">
+      </div>
+    </div>
 
-<div class="recipe-body row">
-  <div class="col-lg-4">
+    <div class="form-group">
+      <div class="col-md-3">
+        <label for="recipe_photo_url"
+               class="control-label bubble">Photo URL</label>
+      </div>
+      <div class="col-md-9">
+        <input class="form-control" id="recipe_photo_url"
+               name="recipe[photo_url]">
+      </div>
+    </div>
+</div>
+<!-- <div class="recipe-body row"> -->
+  <!-- <div class="col-lg-4">
     <div class="img-form">
 
       <div class="form-group row">
@@ -23,9 +36,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="col-lg-8">
+  <div class="col-lg-8 col-lg-offset-2">
 
     <h3>Ingredients</h3>
       <div id="ingredient-entries"></div>

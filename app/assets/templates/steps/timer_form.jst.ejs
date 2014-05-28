@@ -1,4 +1,4 @@
-<div class="col-xs-3">
+<div class="col-lg-3 col-md-4 col-md-offset-4">
   <div class="input-group">
     <input class="form-control hours" type="number"
            min="0" max="10" value="<%= Math.floor(timer / 3600) || 0 %>">
@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div class="col-xs-3">
+<div class="col-lg-3 col-md-4 col-md-offset-4">
   <div class="input-group">
     <input class="form-control minutes" type="number"
            min="0" max="59" value="<%= Math.floor((timer % 3600) / 60) || 0 %>">
@@ -14,7 +14,7 @@
   </div>
 </div>
 
-<div class="col-xs-3">
+<div class="col-lg-3 col-md-4 col-md-offset-4">
   <div class="input-group">
     <input class="form-control seconds" type="number"
            min="0" max="59" value="<%= timer % 60 || 0 %>">
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div class="col-xs-3">
+<div class="col-lg-3 col-md-4 col-md-offset-4">
   <div class="save-item submit-timer">
     <span class="glyphicon glyphicon-ok"></span>
   </div>

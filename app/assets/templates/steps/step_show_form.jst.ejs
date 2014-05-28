@@ -1,24 +1,24 @@
 <div class="edit-component">
-  <div class="col-md-10 step-body">
-    <div class="row">
-      <textarea
-      rows="4"
-      class='step-form editable form-control'><%= step.escape("body") %></textarea>
+  <div class="col-md-9 step-main">
+    <div class="col-md-1 step-rank">
+      <p><%= step.escape("rank") %>.</p>
     </div>
 
-    <div class="row">
-      <div class="add-timer btn btn-default">
-        <span class="glyphicon glyphicon-plus"></span>timer
-      </div>
-      <div class="add-video btn btn-default">
-        <span class="glyphicon glyphicon-plus"></span>video
-      </div>
+    <div class="col-md-11 editable">
+        <textarea
+        rows="4"
+        class="step-form editable form-control"><%= step.escape("body") %></textarea>
     </div>
-
-    <div class="timer-form"></div>
-    <div class="video-form"></div>
   </div>
-  <div class="col-md-1 remove-item">
-    <span class="glyphicon glyphicon-remove"></span>
+
+  <div class="step-edit-buttons col-md-3">
+    <% if (step.recipe.id) { %>
+      <div class="save-item">
+        <span class="glyphicon glyphicon-ok"></span>
+      </div>
+    <% } %>
+    <div class="remove-item remove-step">
+      <span class="glyphicon glyphicon-trash"></span>
+    </div>
   </div>
 </div>

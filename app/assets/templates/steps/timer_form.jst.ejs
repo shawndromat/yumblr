@@ -1,7 +1,7 @@
 <div class="col-xs-3">
   <div class="input-group">
     <input class="form-control hours" type="number"
-           min="0" max="10" value="<%= Math.floor(timer / 3600) %>">
+           min="0" max="10" value="<%= Math.floor(timer / 3600) || 0 %>">
     <span class="input-group-addon">h</span>
   </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="col-xs-3">
   <div class="input-group">
     <input class="form-control minutes" type="number"
-           min="0" max="59" value="<%= Math.floor((timer % 3600) / 60) %>">
+           min="0" max="59" value="<%= Math.floor((timer % 3600) / 60) || 0 %>">
     <span class="input-group-addon">m</span>
   </div>
 </div>
@@ -17,16 +17,16 @@
 <div class="col-xs-3">
   <div class="input-group">
     <input class="form-control seconds" type="number"
-           min="0" max="59" value="<%= timer % 60 %>">
+           min="0" max="59" value="<%= timer % 60 || 0 %>">
     <span class="input-group-addon">s</span>
   </div>
 </div>
 
 <div class="col-xs-3">
-  <div class="btn btn-default submit-timer">
+  <div class="save-item submit-timer">
     <span class="glyphicon glyphicon-ok"></span>
   </div>
-  <div class="btn btn-default remove-timer">
-    <span class="glyphicon glyphicon-trash"></span>
+  <div class="remove-item remove-timer-form">
+    <span class="glyphicon glyphicon-remove"></span>
   </div>
 </div>

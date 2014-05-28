@@ -1,21 +1,22 @@
 window.Yumblr.Views.TimerShow = Backbone.View.extend({
+  initialize: function (options) {
+    this.listenTo(this.model, "change sync", this.render);
+    this.parent = options.parent;
+  },
   template: JST["steps/step_timer"],
   events: {
-    "click .close-timer": "showHideTimer",
     "click .restart-timer": "restartTimer",
-    "click .play-button": "toggleTimer"
+    "click .play-button": "toggleTimer",
+    "click .delete-timer": "deleteTimer"
   },
   render: function () {
     var content = this.template();
     this.$el.html(content);
-    if (!this.$timer) {
+    // if (!this.$timer) {
       this.$timer = this.$(".step-timer").first();
-    }
+    // }
     setTimeout(this.startTimer.bind(this), 100);
     return this;
-  },
-  showHideTimer: function () {
-    this.remove();
   },
   startTimer: function () {
     var time = parseInt(this.model.escape("timer"));
@@ -33,10 +34,12 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
     this.startTimer();
     this.$(".play-button span").removeClass("glyphicon-pause");
     this.$(".play-button span").addClass("glyphicon-play");
+    this.$(".timer-cover").css("visibility", "hidden");
     this.$(".timer-cover").removeClass("flash");
   },
   expireTimer: function () {
-    this.$(".timer-cover").addClass("flash");
+    this.$(".timer-cover").css("visibility", "visible");
+    this.$(".timer-message").addClass("flash");
     this.$(".play-button span").removeClass("glyphicon-pause");
     this.$(".play-button span").addClass("glyphicon-play");
   },
@@ -45,5 +48,14 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
     var $glyph = this.$('.play-button span');
     $glyph.toggleClass("glyphicon-pause");
     $glyph.toggleClass("glyphicon-play");
+  },
+  deleteTimer: function (event) {
+    this.model.set("timer", null);
+    var view = this;
+    this.model.save({},{
+      success: function () {
+        view.parent.removeSubview(".step-timer-wrapper", view);
+      }
+    })
   }
 });

@@ -1,6 +1,7 @@
 /* jQuery Countdown styles 2.0.0. */
+
 .is-countdown {
-	background-color: #eee;
+	background-color: #A1FFE9;
 	border-radius: 10px;
 	height: 50px;
 }
@@ -13,10 +14,10 @@
 .countdown-row {
 	clear: both;
 	width: 150px;
-	padding: 0px 2px;
+	/*padding: 0px 2px;*/
 	text-align: center;
 	display: inline-block;
-	margin: auto;
+	margin: 3px 0 0 -8px;
 }
 .countdown-show1 .countdown-section {
 	width: 98%;

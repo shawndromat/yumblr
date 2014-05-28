@@ -1,2 +1,8 @@
-<textarea class="title-form editable form-control"
-          rows="3"><%= recipe.escape('title') %></textarea>
+<div class="recipe-title">
+  <textarea class="title-form editable form-control"
+            rows="2"><%= recipe.escape('title') %></textarea>
+
+  <div id="save-title" class="save-item">
+    <span class="glyphicon glyphicon-ok"></span>
+  </div>
+</div>

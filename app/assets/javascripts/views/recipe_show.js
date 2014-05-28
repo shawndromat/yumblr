@@ -22,6 +22,7 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   events: {
     "click .edit-title": "editTitle",
     "blur .recipe-title": "saveTitle",
+    "click #save-title": "saveTitle",
     "change .recipe-title": "saveTitle",
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
@@ -78,11 +79,11 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   editTitle: function () {
     var titleForm = JST["recipes/title_form"]
     var title = titleForm({recipe: this.model})
-    $(".recipe-title").html(title);
+    $(".title-card").html(title);
     this.$(".title-form").focus();
   },
   saveTitle: function (event) {
-    var title = $(event.target).val();
+    var title = this.$(".title-form").val();
     this.model.save({title: title});
   },
   editPhoto: function (event) {

@@ -1,9 +1,12 @@
 $text-color: #2C3E50;
-$light-yellow: #B4F9FF;
+$light-blue: #B4F9FF;
 $light-red: #FFAEAE;
 $light-green: #AEFFC2;
 $light-teal: #28C1A3;
 $dark-teal: #16A085;
+$light-purple: #B4BEFF;
+$light-pink: #FFB4F7;
+
 /*
  *  Recipe Show
  *  ===========
@@ -17,20 +20,27 @@ $dark-teal: #16A085;
     display: inline-block;
   }
 
+  .title-card {
+    padding-bottom: 40px;
+  }
+
   .title-card:hover {
     .edit-button {
       visibility: visible;
     }
   }
 
+  .edit-button, .save-item {
+    margin: 5px;
+  }
+
   .edit-button {
-    margin-left: 5px;
-    margin-top: 5px;
     visibility: hidden;
   }
 
-  .recipe-title .form-control {
-    font-size: 1em;
+  textarea {
+    font-size: 2em;
+    display: block;
   }
 
   .edit-recipe {
@@ -92,8 +102,8 @@ $dark-teal: #16A085;
  background-color: #fff;
 }
 
-.edit-button, .remove-item, .save-item {
-// .close-timer, .restart-timer, .play-button
+.edit-button, .remove-item, .save-item,
+.add-timer, .add-video, .button {
 
   width: 35px;
   height: 35px;
@@ -111,7 +121,7 @@ $dark-teal: #16A085;
 }
 
 .edit-button {
-  background-color: $light-yellow;
+  background-color: $light-blue;
 }
 
 .remove-item {
@@ -120,6 +130,14 @@ $dark-teal: #16A085;
 
 .save-item {
   background-color: $light-green;
+}
+
+.add-video {
+  background-color: $light-purple;
+}
+
+.add-timer {
+  background-color: $light-pink;
 }
 
 .save-item, .remove-item {
@@ -184,29 +202,42 @@ $dark-teal: #16A085;
 
 .ingredient-entry {
   position: relative;
+}
 
-  .edit-entry-tab {
-    position: relative;
-    left: -150px;
-    text-align: center;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
-    -webkit-transition: left .3s ease-out;
-    -moz-transition: left .3s ease-out;
-    -o-transition: left .3s ease-out;
-    transition: left .3s ease-out;
+.edit-tab {
+  position: relative;
+  left: -150px;
+  text-align: center;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  -webkit-transition: left .3s ease-out;
+  -moz-transition: left .3s ease-out;
+  -o-transition: left .3s ease-out;
+  transition: left .3s ease-out;
 
-    .edit-entry {
-      padding: 6px 0;
-      float: right;
-      margin-top: 8px;
-      margin-bottom: 8px;
-    }
+  .edit-button {
+    padding: 6px 0px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  .add-timer, .edit-step {
+    float: left;
+    margin-left: 10px;
+    margin-right: 8px;
+  }
+
+  .add-video {
+    float: left;
+  }
+
+  .annotation-buttons {
+    margin-top: 5px;
   }
 }
 
-.ingredient-entry:hover .edit-entry-tab {
-  left: -67px;
+.ingredient-entry:hover .edit-tab, .recipe-step:hover .edit-tab {
+  left: 0px;
 }
 
 .ingredient-entry:first-child .entry-main,
@@ -219,10 +250,6 @@ $dark-teal: #16A085;
 .ingredient-entry:last-child .entry-inputs {
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-}
-
-.edit-entry {
-  margin-left: 10px;
 }
 
 .entry-inputs {
@@ -248,10 +275,6 @@ $dark-teal: #16A085;
   margin-bottom: 20px;
 }
 
-.edit-ingredient, .edit-amount {
-  padding-left: 0px;
-}
-
 .recipe-body {
   margin-top: 30px;
   margin-bottom: 60px;
@@ -264,7 +287,7 @@ $dark-teal: #16A085;
 
   .ingredient-entry {
     p {
-      padding: 5px 0 5px 0;
+      padding: 5px 0 5px 10px;
     }
     height: 50px;
     .ingredient-name {
@@ -288,74 +311,3 @@ $dark-teal: #16A085;
     display: inline-block;
   }
 }
-
-
-/*  Timer  */
-
- .step-timer {
-   position: relative
- }
-
- .timer-cover {
-   background-color: #000;
-   border-radius: 10px;
-   width: 100%;
-   height: 50px;
-   margin-left: 15px;
-   color: #fff;
-   visibility: hidden;
-   z-index: 1;
-   position: absolute;
-   top: 0;
-   left: 0;
- }
-
- .timer-controls {
-   .play-button, .close-timer, .restart-timer {
-     display: inline-block;
-   }
- }
-
- @-webkit-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
-
- @-moz-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
-
- @-ms-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
-
- @-o-keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
-
- @keyframes flash {
-   0%, 50%, 100% {opacity: 1;}
-   25%, 75% {opacity: 0;}
- }
-
- .flash {
-   visibility: visible;
-   -webkit-animation-duration: 1.5s;
-   -moz-animation-duration: 1.5s;
-   -ms-animation-duration: 1.5s;
-   -o-animation-duration: 1.5s;
-   animation-duration: 1.5s;
-   -webkit-animation-name: flash;
-   -moz-animation-name: flash;
-   -ms-animation-name: flash;
-   -o-animation-name: flash;
-   animation-name: flash;
-   -webkit-animation-iteration-count: 3;
-   -moz-animation-iteration-count: 3;
-   -ms-animation-iteration-count: 3;
-   -o-animation-iteration-count: 3;
-   animation-iteration-count: 3;
- }

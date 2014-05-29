@@ -1,6 +1,7 @@
 window.Yumblr.Views.StepForm = Backbone.View.extend({
   initialize: function (options) {
-    this.parent = options.parent
+    this.parent = options.parent;
+    this.listenTo(this.model, "change sync", this.render);
   },
   className: "step-form row step-main recipe-step",
   template: JST["steps/step_form"],
@@ -14,6 +15,7 @@ window.Yumblr.Views.StepForm = Backbone.View.extend({
   },
   removeStep: function () {
     this.remove();
-    this.parent.saveRanks("#recipe-steps")
+    this.parent.saveRanks("#recipe-steps", ".recipe-step")
+    this.parent.removeSubview("#recipe-steps", this);
   }
 });

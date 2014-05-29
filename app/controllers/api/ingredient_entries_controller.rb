@@ -1,5 +1,8 @@
 module Api
   class IngredientEntriesController < ApiController
+    include StepsHelper
+    before_action :require_recipe_owner
+
     def create
       @ingredient_entry = IngredientEntry.new(ingredient_entry_params)
       if @ingredient_entry.save
@@ -11,6 +14,7 @@ module Api
     end
 
     def update
+      
       @ingredient_entry = IngredientEntry.find(params[:id])
       if @ingredient_entry.update_attributes(ingredient_entry_params)
         render partial: "api/ingredient_entries/ingredient_entry",

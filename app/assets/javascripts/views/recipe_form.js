@@ -33,7 +33,10 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   addEntryForm: function () {
     var rank = this.$(".entry-form").length + 1;
     var entry = new Yumblr.Models.IngredientEntry({rank: rank});
-    var ingredientForm = new Yumblr.Views.IngredientEntryForm({model: entry});
+    var ingredientForm = new Yumblr.Views.IngredientEntryForm({
+      model: entry,
+      parent: this
+    });
     this.addSubview("#new-ingredients", ingredientForm);
   },
   submit: function (event) {

@@ -1,8 +1,9 @@
 window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   initialize: function (options) {
     this.triggerForm = options.triggerForm;
+    this.parent = options.parent;
 
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change", this.render);
   },
   className: "ingredient-entry row",
   template: JST["ingredient_entries/ingredient_entry_show"],
@@ -37,7 +38,6 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
       ingredient_name: this.$(".entry-ingredient").val(),
       recipe_id: this.model.recipe.id
     }
-    debugger
     if (attrs.ingredient_name) {
       this.model.set(attrs);
       var view = this;
@@ -52,8 +52,11 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     var view = this;
 
     function success (model) {
-      view.collection.remove(model);
+      
       view.remove();
+      view.parent.saveRanks("#ingredient-entries", ".ingredient-entry")
+      view.parent.removeSubview("#ingredient-entries", view);
+      view.collection.remove(model);
     }
 
     if (this.model.id) {

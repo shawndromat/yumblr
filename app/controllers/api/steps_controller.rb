@@ -1,7 +1,11 @@
 module Api
   class StepsController < ApiController
+    include StepsHelper
+
+    before_action :require_recipe_owner, only: [:destroy]
+
     def create
-      @step = Step.new(step_params)
+      @step = Step.new(owner_step_params)
       if @step.save
         render partial: "api/steps/step", locals: { step: @step }
       else
@@ -11,7 +15,14 @@ module Api
 
     def update
       @step = Step.find(params[:id])
-      if @step.update_attributes(step_params)
+
+      if current_user == @step.recipe.owner
+        @step.update_attributes(owner_step_params)
+      else
+        @step.update_attributes(non_owner_step_params)
+      end
+
+      if @step.save
         render partial: "api/steps/step", locals: { step: @step }
       else
         render json: { errors: @step.errors.full_messages }, status: 422
@@ -25,8 +36,12 @@ module Api
     end
 
     private
-    def step_params
+    def owner_step_params
       params.require(:step).permit(:body, :id, :rank, :recipe_id, :timer)
+    end
+
+    def non_owner_step_params
+      params.require(:step).permit(:timer)
     end
   end
 end

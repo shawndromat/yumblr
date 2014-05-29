@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
+    flash.now[:errors] = ["You must be logged in to do that"]
     redirect_to new_session_url if current_user.nil?
   end
 
@@ -29,4 +30,5 @@ class ApplicationController < ActionController::Base
     current_user.reset_session_token!
     session[:token] = nil
   end
+
 end

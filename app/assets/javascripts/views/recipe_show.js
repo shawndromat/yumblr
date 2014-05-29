@@ -4,10 +4,8 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync change", this.render);
     this.listenTo(this.model.steps(), "add", this.addStep);
     this.listenTo(this.model.steps(), "reset", this.render);
-    this.listenTo(this.model.steps(), "remove", this.removeStep);
     this.listenTo(this.model.entries(), "add", this.addEntry);
     this.listenTo(this.model.entries(), "sync change remove", this.render);
-    this.listenTo(this.model.entries(), "remove", this.removeEntry);
 
     var view = this;
     this.model.steps().each( function (step) {
@@ -27,6 +25,7 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
     "click .edit-photo": "editPhoto",
+    "click .save-photo": "savePhoto"
   },
   render: function () {
     var content = this.template({recipe: this.model});
@@ -47,7 +46,8 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     var stepShow = new Yumblr.Views.StepShow({
       model: step,
       collection: this.model.steps(),
-      triggerForm: trigger
+      triggerForm: trigger,
+      parent: this
     });
     this.addSubview("#recipe-steps", stepShow);
   },
@@ -56,7 +56,8 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     var entryShow = new Yumblr.Views.IngredientEntryShow({
       model: entry,
       collection: this.model.entries(),
-      triggerForm: trigger
+      triggerForm: trigger,
+      parent: this
     });
     this.addSubview("#ingredient-entries", entryShow);
   },
@@ -91,27 +92,7 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     this.$("#photo-input").focus();
   },
   savePhoto: function (event) {
-    var photoUrl = $(event.target).val();
-    this.model.save({photo_url: photoUrl})
-  },
-  removeStep: function (step) {
-    var subview = _.find(
-      this.subviews()["#recipe-steps"],
-      function (subview) {
-        return subview.model === step;
-      }
-    );
-
-    this.removeSubview("#recipe-steps", subview);
-  },
-  removeEntry: function (entry) {
-    var subview = _.find(
-      this.subviews()["#ingredient-entries"],
-      function (subview) {
-        return subview.model === entry;
-      }
-    );
-
-    this.removeSubview("#ingredient-entries", subview);
+    var photoUrl = this.$("#photo-input").val();
+    this.model.save({recipe: {photo_url: photoUrl}})
   },
 });

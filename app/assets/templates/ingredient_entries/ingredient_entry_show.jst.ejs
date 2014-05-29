@@ -7,9 +7,11 @@
     </p>
   </div>
 
+  <% if (currentUserId === parseInt(entry.recipe.escape("owner_id"))) { %>
   <div class="col-md-3 edit-entry-tab edit-tab">
     <div type="button" class="edit-entry edit-button">
       <span class="glyphicon glyphicon-pencil"></span>
     </div>
   </div>
+  <% } %>
 </span>

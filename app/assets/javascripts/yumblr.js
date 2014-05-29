@@ -68,14 +68,25 @@ Backbone.CompositeView = Backbone.View.extend({
     subviews.splice(subviews.indexOf(subview), 1);
     subview.remove();
   },
-  saveRanks: function (selector) {
-    var element = $(selector);
-    this.subviews()[selector].each(function (subview) {
-      var index = element.indexOf(subview.$el);
-      debugger
-      if (subview.model.get('rank') !== element.indexOf(subview.$el)) {
-        subview.model.set('rank', index);
-        subview.save();
+  clearSubviews: function (selector) {
+    _(this.subviews()[selector]).each(function (subview) {
+      subview.remove();
+    })
+    this.subviews()[selector] = undefined;
+  },
+  isEmpty: function (selector) {
+    return ((!this.subviews()[selector]) || (this.subviews()[selector].length === 0));
+  },
+  saveRanks: function (selector, subselector) {
+    _.each(this.subviews()[selector], function (subview) {
+      var index = $(subselector).index(subview.$el);
+
+      //skip if subview in question was the one deleted (index === -1)
+      if (index >= 0 && (subview.model.get('rank') !== index + 1)) {
+        subview.model.set('rank', index + 1);
+        if (subview.model.id) {
+          subview.model.save({step: {rank: index + 1 }});
+        }
       }
     })
   }

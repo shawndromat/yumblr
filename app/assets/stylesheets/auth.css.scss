@@ -4,10 +4,20 @@ $text-color: #2C3E50;
   background-color: transparent;
   background-image: image-url("auth2.jpg");
   background-size: cover;
+
+  .alert-warning {
+    width: 25%;
+    height: 60px;
+    margin: 150px auto auto auto;
+  }
 }
 
 #auth-body:after {
   display: none;
+}
+
+.auth-warning {
+  width: 600px;
 }
 
 .auth {

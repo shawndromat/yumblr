@@ -1,4 +1,3 @@
-
 <div class="col-md-9 step-main">
   <div class="col-md-1 step-rank">
     <p><%= step.escape('rank') %>.</p>
@@ -16,11 +15,13 @@
 
 
 <div class="col-md-3 edit-tab edit-step-tab">
-  <div class="row">
-    <div type="button" class="edit-step edit-button">
-      <span class="glyphicon glyphicon-pencil"></span>
+  <% if (currentUserId === parseInt(step.recipe.escape("owner_id"))) { %>
+    <div class="row">
+      <div type="button" class="edit-step edit-button">
+        <span class="glyphicon glyphicon-pencil"></span>
+      </div>
     </div>
-  </div>
+  <% } %>
 
   <div class="row annotation-buttons">
     <div type="button" class="add-timer">

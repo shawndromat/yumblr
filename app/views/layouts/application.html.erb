@@ -7,24 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= yield :body_id %>">
+
   <% if current_user %>
   <%= render "layouts/header" %>
   <% end %>
 
-  <% if flash[:errors] %>
-  <ul>
-    <% flash[:errors].each do |error| %>
-    <li>error</li>
-    <% end %>
-  </ul>
-  <% end %>
+  <!-- <%= render "layouts/errors" %>   -->
 
-  <% if notice || alert %>
+  <!-- <% if notice || alert %>
     <div class="row">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
     </div>
-  <% end %>
+  <% end %> -->
 
 <%= yield %>
 

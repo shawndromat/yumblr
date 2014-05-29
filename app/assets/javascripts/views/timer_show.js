@@ -13,7 +13,8 @@ window.Yumblr.Views.TimerShow = Backbone.View.extend({
     var content = this.template();
     this.$el.html(content);
     this.$timer = this.$(".timer-" + this.model.id).first();
-    setTimeout(this.startTimer.bind(this), 500);
+    this.startTimer();
+    setTimeout(this.restartTimer.bind(this), 1000);
     return this;
   },
   startTimer: function () {

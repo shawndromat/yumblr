@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+  class UsersController < ApplicationController
   before_action :require_correct_user, only: [:show, :destroy]
 
   def create

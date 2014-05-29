@@ -2,11 +2,13 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   className: "row recipe-step",
   initialize: function (options) {
     this.triggerForm = options.triggerForm;
+    this.parent = options.parent;
+
     if (this.model.get("timer")) {
       this.addTimer();
     }
     this.listenTo(this.model, "change:timer", this.toggleTimerView)
-    this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.model, "sync change:rank", this.render);
   },
   template: JST["steps/step_show"],
   formTemplate: JST["steps/step_show_form"],
@@ -45,6 +47,9 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
       this.model.save({step: attrs}, {
         success: function (model) {
           view.triggerForm = false;
+        },
+        error: function (response) {
+          console.log(response);
         }
       });
     }
@@ -53,8 +58,10 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     var view = this;
 
     function success (model) {
-      view.collection.remove(model);
       view.remove();
+      view.parent.saveRanks("#recipe-steps", ".recipe-step")
+      view.parent.removeSubview("#recipe-steps", view);
+      view.collection.remove(model);
     }
 
     if (this.model.id) {
@@ -118,5 +125,6 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
       this.clearSubviews(".step-video-wrapper");
       this.render();
     }
-  }
+  },
+
 })

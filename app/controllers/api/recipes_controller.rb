@@ -1,6 +1,7 @@
 module Api
   class RecipesController < ApiController
     before_action :require_login
+    before_action :require_owner, only: [:update]
 
     def index
       @recipes = Recipe.all
@@ -39,6 +40,11 @@ module Api
       params.require(:recipe)
         .permit(:title, :photo_url, steps_attributes: [:body, :rank],
               ingredient_entries_attributes: [:ingredient_name, :rank, :amount, :unit, :fraction])
+    end
+
+    def require_owner
+      recipe = Recipe.find(params[:id])
+      redirect_to root_url unless recipe.owner == current_user
     end
   end
 end

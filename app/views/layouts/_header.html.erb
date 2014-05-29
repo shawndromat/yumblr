@@ -8,22 +8,28 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right plain-navbar">
           <li>
-            <%= button_to "", root_url, class: "pull-right",
-                  id: "home-button", method: :get %>
+            <a href="#">
+              <span class="glyphicon glyphicon-home"></span>
+            </a>
           </li>
           <li>
             <a href="#recipes/new">
-              <button><span class="glyphicon glyphicon-plus"></span></button>
+              <span class="glyphicon glyphicon-plus"></span>
             </a>
           </li>
           <li>
             <a href="#mycookbook">
-              <button><span class="glyphicon glyphicon-book"></span></button>
+              <span class="glyphicon glyphicon-book"></span>
             </a>
           </li>
           <li>
-            <%= button_to "", session_url, class: "pull-right",
-                  id: "logout-button", method: :delete %>
+            <a href="#recipes/search">
+              <span class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+          <li>
+            <%= link_to raw("<span class='glyphicon glyphicon-off'></span>"),
+                  session_url, method: :delete %>
           </li>
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -2,6 +2,7 @@ module Api
   class IngredientsController < ApiController
     def index
       @ingredients = Ingredient.all
+      render json: @ingredients
     end
 
     def create

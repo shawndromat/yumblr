@@ -80,10 +80,13 @@ class IngredientEntry < ActiveRecord::Base
     self.ingredient = Ingredient.find_or_create_by_name(name)
   end
 
+  def has_fraction?
+    IngredientEntry::FRACTIONS[1..-1].include?(self.fraction)
+  end
+
   def unit_pluralize
     return self.unit unless IngredientEntry::PLURAL_UNITS.include?(unit)
-    if ((self.amount && self.amount > 1) ||
-          (self.amount == 1 && self.fraction != ""))
+    if ((self.amount && self.amount > 1) || (self.amount == 1 && self.has_fraction?))
       return self.unit.pluralize
     else
       return self.unit

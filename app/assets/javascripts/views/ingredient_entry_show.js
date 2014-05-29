@@ -10,6 +10,7 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
   events: {
     "click .edit-entry": "editEntry",
     "click .save-item": "saveEntry",
+    "blur .edit-entry": "saveEntry",
     "click .remove-item": "removeEntry"
   },
   render: function () {

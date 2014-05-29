@@ -1,2 +1,2 @@
-window.Yumblr.Models.Ingredient = new Backbone.Model.extend({
+window.Yumblr.Models.Ingredient = Backbone.Model.extend({
 });

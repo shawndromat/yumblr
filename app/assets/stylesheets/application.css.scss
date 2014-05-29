@@ -43,40 +43,29 @@ body:after {
     margin-left: 10px;
   }
 
-  .navbar-nav {
+  .navbar-nav.navbar-right {
     margin-top: 10px;
 
     li {
+      position: relative;
       margin: 0 5px;
 
       a {
-        padding: 0;
-      }
-
-      button {
-        border: none;
-        width: 40px;
-        height: 40px;
-        background-color: transparent;
+        position: relative;
+        padding: 10px 10px;
         font-size: 2em;
         color: #fff;
+        -webkit-transition: top .5s linear;
+        -moz-transition: top .5s linear;
+        -o-transition: top .5s linear;
+        transition: top .5s linear;
       }
+    }
 
-      #logout-button, #home-button {
-        border: none;
-        width: 40px;
-        height: 40px;
-        background-color: transparent;
-        background-size: cover;
-      }
-
-      #home-button {
-        background-image: image-url("home_icon.gif");
-      }
-
-      #logout-button {
-        background-image: image-url("logout_icon.gif");
-      }
+    a:hover {
+      top: -5px;
+      // color: #ddd;
+      background-color: transparent;
     }
   }
 }

@@ -10,8 +10,8 @@ window.Yumblr = {
         Yumblr.recipesArray = Yumblr.recipes.toArray();
       }
     })
-    Yumblr.currentUserRecipes = new Yumblr.Collections.Recipes();
     Yumblr.ingredients = new Yumblr.Collections.Ingredients();
+    Yumblr.currentUserRecipes = new Yumblr.Collections.Recipes();
     new Yumblr.Routers.AppRouter({
       $rootEl: $("#content"),
     });

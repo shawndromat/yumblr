@@ -204,6 +204,10 @@ $light-pink: #FFB4F7;
   top: 0px;
 }
 
+.steps-wrapper {
+  margin-top: 20px;
+}
+
 /*  Ingredient Entries */
 
 
@@ -294,7 +298,7 @@ $light-pink: #FFB4F7;
 
   .ingredient-entry {
     p {
-      padding: 5px 0 5px 10px;
+      padding: 5px 0 6px 10px;
     }
     height: 50px;
     .ingredient-name {
@@ -321,4 +325,8 @@ $light-pink: #FFB4F7;
 
 .img-placeholder label, #photo-input {
   margin-top: 20px;
+}
+
+.img-placeholder h3 {
+  padding-top: 20px;
 }

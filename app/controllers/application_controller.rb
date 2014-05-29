@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def require_login
-    flash.now[:errors] = ["You must be logged in to do that"]
+    flash.notice = ["You must be logged in to do that"]
     redirect_to new_session_url if current_user.nil?
   end
 

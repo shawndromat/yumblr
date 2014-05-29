@@ -7,7 +7,8 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
     "recipes/new": "recipeNew",
     "recipes/:id/edit": "recipeEdit",
     "recipes/:id": "recipeShow",
-    "mycookbook": "cookbookIndex"
+    "mycookbook": "cookbookIndex",
+    "recipes/search": "search"
   },
   recipeIndex: function () {
     Yumblr.recipes.fetch();

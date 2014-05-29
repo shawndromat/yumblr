@@ -83,6 +83,13 @@ body:after {
   }
 }
 
+.alert.alert-warning {
+  width: 500px;
+  padding: 10px;
+  margin: auto;
+  // margin: 150px auto auto auto;
+}
+
 #content {
   background-color: #16A085;
   padding: 20px;

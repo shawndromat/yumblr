@@ -3,10 +3,17 @@
     <div class="editable title-card">
       <h2 class="recipe-title"><%= recipe.escape('title') %></h2>
       <% if (currentUserId === parseInt(recipe.escape("owner_id"))) { %>
+        <h4>
+          added by you!
+        </h4>
       <div class="edit-title edit-button">
         <span class="glyphicon glyphicon-pencil"></span>
       </div>
-      <% } %>
+      <% } else { %>
+        <h4>
+          added by <%= recipe.escape("owner") %>
+        </h4>
+        <% } %>
     </div>
   </div>
 
@@ -18,7 +25,11 @@
              class="img-responsive editable" />
       <% } else {  %>
         <div class="img-placeholder">
-
+          <% if (currentUserId === parseInt(recipe.escape("owner_id"))) { %>
+            <h3>Add a photo</h3>
+          <% } else {%>
+            <h3>No photo yet</h3>
+          <% } %>
         </div>
       <% } %>
       <% if (currentUserId === parseInt(recipe.escape("owner_id"))) { %>

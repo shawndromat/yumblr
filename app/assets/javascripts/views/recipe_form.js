@@ -2,6 +2,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   initialize: function () {
     this.addEntryForm();
     this.addStepForm();
+    this.errors = [];
   },
   className: "recipe-form",
   template: JST["recipes/recipe_form"],
@@ -13,7 +14,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     "submit form": "submit"
   },
   render: function () {
-    var content = this.template({recipe: this.model});
+    var content = this.template({recipe: this.model, errors: this.errors});
     this.$el.html(content);
     this.attachSubviews();
     // later feature
@@ -43,6 +44,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     event.preventDefault();
     var formData = $(event.target).serializeJSON();
     this.model.set(formData);
+    var view = this;
     this.model.save({},{
       success: function (model) {
         if (model.isNew()) {
@@ -50,6 +52,11 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
           Yumblr.currentUserRecipes.add(model);
         }
         Backbone.history.navigate("recipes/" + model.id, {trigger: true})
+      },
+      error: function (model, response) {
+        var resp = JSON.parse(response.responseText);
+        view.errors = resp["errors"];
+        view.render();
       }
     })
   }

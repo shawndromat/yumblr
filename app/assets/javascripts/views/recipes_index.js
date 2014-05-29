@@ -12,6 +12,9 @@ window.Yumblr.Views.RecipesIndex = Backbone.View.extend({
     var $active = this.$el.find(".btn-group a[href='#" + loc + "']");
     $active.siblings().removeClass("active");
     $active.addClass("active");
+    if (location.href.indexOf("#") === -1 ) {
+      this.$(".btn-group a[href='#']").addClass("active");
+    }
     return this;
   },
 

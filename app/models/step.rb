@@ -14,4 +14,5 @@ class Step < ActiveRecord::Base
   validates :body, :recipe, :rank, presence: true
 
   belongs_to :recipe
+  has_one :owner, through: :recipe, source: :owner
 end

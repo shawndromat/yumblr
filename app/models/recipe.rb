@@ -12,7 +12,6 @@
 
 class Recipe < ActiveRecord::Base
   validates :title, :owner, presence: true
-  validate :non_default_title
   belongs_to :owner, class_name: "User", foreign_key: :owner_id
 
   has_many :steps, inverse_of: :recipe
@@ -25,7 +24,8 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :ingredient_entries,
       reject_if: proc { |attributes| attributes['ingredient_name'].blank? }
 
-  def non_default_title
-    errors[:title] << "can't be default value" if self.title == "Recipe Title"
+  def self.find_by_ingredient(ingredient_name)
+
   end
+
 end

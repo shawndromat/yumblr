@@ -20,6 +20,7 @@ class IngredientEntry < ActiveRecord::Base
 
   belongs_to :recipe
   belongs_to :ingredient
+  has_one :owner, through: :recipe, source: :owner
 
   UNITS = [
       "",

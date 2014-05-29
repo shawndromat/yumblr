@@ -15,7 +15,7 @@
 
 
 <div class="col-md-3 edit-tab edit-step-tab">
-  <% if (currentUserId === parseInt(step.recipe.escape("owner_id"))) { %>
+  <% if (currentUserId === parseInt(step.escape("owner_id"))) { %>
     <div class="row">
       <div type="button" class="edit-step edit-button">
         <span class="glyphicon glyphicon-pencil"></span>

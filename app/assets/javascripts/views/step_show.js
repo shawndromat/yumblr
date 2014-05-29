@@ -21,7 +21,10 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   },
   render: function () {
     $(this.el).attr("data-step-id", this.model.id);
-    var content = this.template({step: this.model});
+    var content = this.template({
+      step: this.model,
+      recipe: this.parent.model
+    });
     this.$el.html(content);
     if (this.triggerForm) {
       this.editStep();

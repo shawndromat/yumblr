@@ -1,4 +1,12 @@
-
+<% if (errors.length > 0) { %>
+  <div class="alert alert-warning">
+    <ul>
+      <% _.each(errors, function(error) { %>
+        <li><%= error %></li>
+        <% }) %>
+    </ul>
+  </div>
+<% } %>
 
 <form class="form-horizontal col-lg-10 col-lg-offset-1">
   <div id="form-title" class="col-md-3">

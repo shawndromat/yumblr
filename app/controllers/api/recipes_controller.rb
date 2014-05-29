@@ -4,7 +4,7 @@ module Api
     before_action :require_owner, only: [:update]
 
     def index
-      @recipes = Recipe.all
+      @recipes = Recipe.all.sort_by{|recipe| recipe.created_at}.reverse
       respond_to do |format|
         format.html
         format.json { render jbuilder: @recipes }
@@ -33,6 +33,11 @@ module Api
       else
         render json: { errors: @recipe.errors.full_messages }, status: 422
       end
+    end
+
+    def search
+      @recipes = Recipe.find_by_ingredient(params[:ingredient_name])
+      render jbuilder: @recipes
     end
 
     private

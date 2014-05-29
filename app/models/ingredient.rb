@@ -16,8 +16,8 @@ class Ingredient < ActiveRecord::Base
 
   def self.find_or_create_by_name(name)
     ingredient_name = name.strip.downcase
-    ingredient = Ingredient.find_by_name(ingredient_name.titleize)
+    ingredient = Ingredient.find_by_name(ingredient_name.downcase)
     return ingredient if ingredient
-    Ingredient.create!(name: ingredient_name.titleize)
+    Ingredient.create!(name: ingredient_name.downcase)
   end
 end

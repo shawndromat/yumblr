@@ -8,6 +8,19 @@ $light-green: #AEFFC2;
   text-align: center;
 }
 
+button#random-recipe {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: $light-green;
+  border-radius: 10px;
+  border: none;
+}
+
+button#random-recipe:hover {
+  background-color: #8AFFA3;
+}
+
 .recipe-form .form-horizontal {
 
   .add-item {

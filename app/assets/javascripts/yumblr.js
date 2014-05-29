@@ -5,7 +5,7 @@ window.Yumblr = {
   Routers: {},
   initialize: function() {
     Yumblr.recipes = new Yumblr.Collections.Recipes();
-    Yumblr.currentUserRecipes = new Yumblr.Collections.Recipes();
+    Yumblr.ingredients = new Yumblr.Collections.Ingredients();
     new Yumblr.Routers.AppRouter({
       $rootEl: $("#content"),
     });

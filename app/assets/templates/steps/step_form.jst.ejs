@@ -5,7 +5,7 @@
          value="<%= step.escape('rank') %>">
   <textarea class="form-control"
             rows="4"
-            name="recipe[steps_attributes][<%= step.escape('rank') %>][body]"></textarea>
+            name="recipe[steps_attributes][<%= step.escape('rank') %>][body]"><%= step.escape('body') %></textarea>
 </div>
 <div class="col-md-1 remove-item">
   <span class="glyphicon glyphicon-remove"></span>

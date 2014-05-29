@@ -5,10 +5,10 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
   routes: {
     "": "recipeIndex",
     "recipes/new": "recipeNew",
+    "recipes/search": "search",
     "recipes/:id/edit": "recipeEdit",
     "recipes/:id": "recipeShow",
-    "mycookbook": "cookbookIndex",
-    "recipes/search": "search"
+    "mycookbook": "cookbookIndex"
   },
   recipeIndex: function () {
     Yumblr.recipes.fetch();
@@ -52,6 +52,13 @@ Yumblr.Routers.AppRouter = Backbone.Router.extend({
       collection: Yumblr.recipes
     });
     this._swapView(formView);
+  },
+  search: function () {
+    Yumblr.ingredients.fetch();
+    var searchView = new Yumblr.Views.RecipeSearch({
+      collection: Yumblr.ingredients
+    });
+    this._swapView(searchView);
   },
   _swapView: function (view) {
     if (this.currentView) {

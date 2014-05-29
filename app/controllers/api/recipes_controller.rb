@@ -40,6 +40,11 @@ module Api
       render jbuilder: @recipes
     end
 
+    # def random
+    #   @recipe = Recipe.all.sample
+    #   render partial: "api/recipes/recipe", locals: { recipe: @recipe }
+    # end
+
     private
     def recipe_params
       params.require(:recipe)

@@ -3,6 +3,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     this.addEntryForm();
     this.addStepForm();
     this.errors = [];
+    // this.listenTo(this.model, 'sync', this.addComponents)
   },
   className: "recipe-form",
   template: JST["recipes/recipe_form"],
@@ -11,7 +12,8 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
     "sortupdate #recipe-steps": "updateSteps",
-    "submit form": "submit"
+    "submit form": "submit",
+    "click #random-recipe": "random"
   },
   render: function () {
     var content = this.template({recipe: this.model, errors: this.errors});
@@ -59,5 +61,37 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
         view.render();
       }
     })
-  }
+  },
+  random: function (event) {
+    event.preventDefault();
+    var random = _.sample(Yumblr.recipes.models).attributes[0];
+    this.model = new Yumblr.Models.Recipe(random)
+    var view = this;
+    this.model.fetch({
+      success: function () {
+        view.model.steps().each( function (step) {
+          view.addStep(step)
+        });
+        view.model.entries().each( function (entry) {
+          view.addEntry(entry)
+        });
+        view.render();
+      }
+    });
+    this.render();
+  },
+  addStep: function (step) {
+    var stepForm = new Yumblr.Views.StepForm({
+      model: step,
+      parent: this
+    });
+    this.addSubview("#recipe-steps", stepForm);
+  },
+  addEntry: function (entry) {
+    var entryForm = new Yumblr.Views.IngredientEntryForm({
+      model: entry,
+      parent: this
+    });
+    this.addSubview("#new-ingredients", entryForm);
+  },
 });

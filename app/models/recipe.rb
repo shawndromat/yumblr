@@ -25,7 +25,8 @@ class Recipe < ActiveRecord::Base
       reject_if: proc { |attributes| attributes['ingredient_name'].blank? }
 
   def self.find_by_ingredient(ingredient_name)
-
+    ingredient = Ingredient.find_or_create_by_name(ingredient_name)
+    return ingredient.try(:recipes)
   end
 
 end

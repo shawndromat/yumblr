@@ -13,7 +13,6 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   events: {
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
-    "sortupdate #recipe-steps": "updateSteps",
     "submit form": "submit",
     "click #random-recipe": "random"
   },
@@ -21,9 +20,6 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var content = this.template({recipe: this.model, errors: this.errors});
     this.$el.html(content);
     this.attachSubviews();
-    // later feature
-    // this.$('#recipe-steps').sortable();
-    // this.$('#ingredient-entries').sortable();
     return this;
   },
   addStepForm: function () {
@@ -48,6 +44,8 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     event.preventDefault();
     var formData = $(event.target).serializeJSON();
     this.model.set(formData);
+    this.model.set("id", null);
+    this.model.set("private", false);
     var view = this;
     this.model.save({},{
       success: function (model) {
@@ -97,5 +95,5 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
       parent: this
     });
     this.addSubview("#new-ingredients", entryForm);
-  },
+  }
 });

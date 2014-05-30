@@ -48,7 +48,7 @@ module Api
     private
     def recipe_params
       params.require(:recipe)
-        .permit(:title, :photo_url, steps_attributes: [:body, :rank],
+        .permit(:title, :photo_url, :private, steps_attributes: [:body, :rank],
               ingredient_entries_attributes: [:ingredient_name, :rank, :amount, :unit, :fraction])
     end
 

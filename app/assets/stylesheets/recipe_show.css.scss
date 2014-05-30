@@ -152,6 +152,10 @@ $light-pink: #FFB4F7;
   margin-right: 8px;
 }
 
+#ingredient-entries, #recipe-steps {
+  cursor: move;
+}
+
 #ingredient-entries {
   margin-bottom: 20px;
 }

@@ -25,7 +25,9 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
     "click .edit-photo": "editPhoto",
-    "click .save-photo": "savePhoto"
+    "click .save-photo": "savePhoto",
+    "sortupdate #ingredient-entries": "saveEntriesRank",
+    "sortupdate #recipe-steps": "saveStepsRank"
   },
   render: function () {
     var content = this.template({recipe: this.model});
@@ -39,6 +41,8 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     if (this.model.entries().length > 0) {
       this.$(".add-entry").addClass("mobile");
     }
+    $("#recipe-steps").sortable();
+    $("#ingredient-entries").sortable();
     return this;
   },
   addStep: function (step) {
@@ -95,4 +99,10 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
     var photoUrl = this.$("#photo-input").val();
     this.model.save({recipe: {photo_url: photoUrl}})
   },
+  saveEntriesRank: function (event, ui) {
+    this.saveRanks("#ingredient-entries", ".ingredient-entry");
+  },
+  saveStepsRank: function () {
+    this.saveRanks("#recipe-steps", ".recipe-step")
+  }
 });

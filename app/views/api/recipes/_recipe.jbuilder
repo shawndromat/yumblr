@@ -1,4 +1,4 @@
-json.extract! recipe, :title, :photo_url, :id
+json.extract! recipe, :title, :photo_url, :id, :private
 
 json.owner recipe.owner.username
 json.owner_id recipe.owner.id

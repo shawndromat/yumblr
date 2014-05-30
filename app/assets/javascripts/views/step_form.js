@@ -14,8 +14,10 @@ window.Yumblr.Views.StepForm = Backbone.View.extend({
     return this;
   },
   removeStep: function () {
-    this.remove();
-    this.parent.saveRanks("#recipe-steps", ".recipe-step")
-    this.parent.removeSubview("#recipe-steps", this);
+    if (this.parent.subviews()["#recipe-steps"].length > 1) {
+      this.remove();
+      this.parent.saveRanks("#recipe-steps", ".recipe-step")
+      this.parent.removeSubview("#recipe-steps", this);
+    }
   }
 });

@@ -15,8 +15,10 @@ window.Yumblr.Views.IngredientEntryForm = Backbone.View.extend({
     return this;
   },
   removeEntry: function () {
-    this.remove();
-    this.parent.saveRanks("#new-ingredients", ".ingredient-entry")
-    this.parent.removeSubview("#new-ingredients", this);
+    if (this.parent.subviews()["#new-ingredients"].length > 1) {
+      this.remove();
+      this.parent.saveRanks("#new-ingredients", ".ingredient-entry");
+      this.parent.removeSubview("#new-ingredients", this);
+    }
   }
 });

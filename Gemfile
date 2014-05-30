@@ -17,6 +17,7 @@ gem 'jquery-ui-rails'
 gem 'font-awesome-sass'
 gem 'bcrypt'
 gem 'figaro'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'annotate'

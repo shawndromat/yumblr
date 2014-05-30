@@ -49,7 +49,7 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
     var formData = $(event.target).serializeJSON();
     this.model.set(formData);
     var view = this;
-    this.model.save({},{
+    this.model.save({recipe: {owner_id: currentUserId}},{
       success: function (model) {
         if (model.isNew()) {
           Yumblr.recipes.add(model);

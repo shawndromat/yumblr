@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string(255)      not null
-#  photo_url  :string(255)
+#  photo_url  :text
 #  created_at :datetime
 #  updated_at :datetime
 #  owner_id   :integer          not null

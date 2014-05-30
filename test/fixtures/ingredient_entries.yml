@@ -9,7 +9,7 @@
 #  ingredient_id :integer          not null
 #  created_at    :datetime
 #  updated_at    :datetime
-#  rank          :integer
+#  rank          :integer          not null
 #  fraction      :string(255)
 #
 

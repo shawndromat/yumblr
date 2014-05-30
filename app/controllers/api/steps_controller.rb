@@ -41,7 +41,7 @@ module Api
     end
 
     def non_owner_step_params
-      params.require(:step).permit(:timer)
+      params.require(:step).permit(:timer, :video_url)
     end
   end
 end

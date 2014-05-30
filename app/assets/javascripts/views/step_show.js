@@ -7,6 +7,11 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     if (this.model.get("timer")) {
       this.addTimer();
     }
+
+    if (this.model.get("video_url")) {
+      this.addVideo();
+    }
+
     this.listenTo(this.model, "change:timer", this.toggleTimerView)
     this.listenTo(this.model, "sync change:rank", this.render);
   },
@@ -113,21 +118,4 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     this.triggerForm = true;
     this.render();
   },
-  toggleTimerView: function () {
-    if (this.model.get("timer")) {
-      this.addTimer();
-    } else {
-      this.clearSubviews(".step-timer-wrapper");
-      this.render();
-    }
-  },
-  toggleVideoView: function () {
-    if (this.model.get("video")) {
-      this.addVideo();
-    } else {
-      this.clearSubviews(".step-video-wrapper");
-      this.render();
-    }
-  },
-
 })

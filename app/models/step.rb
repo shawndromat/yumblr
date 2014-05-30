@@ -8,6 +8,8 @@
 #  rank       :integer          not null
 #  created_at :datetime
 #  updated_at :datetime
+#  timer      :integer
+#  video_url  :text
 #
 
 class Step < ActiveRecord::Base

@@ -16,6 +16,7 @@ gem 'rails_12factor', group: :production
 gem 'jquery-ui-rails'
 gem 'font-awesome-sass'
 gem 'bcrypt'
+gem 'figaro'
 
 group :development do
   gem 'annotate'

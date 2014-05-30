@@ -99,6 +99,13 @@ $light-blue: #B4F9FF;
   display:none;
 }
 
+.index-placeholder {
+  width: 90%;
+  margin: 5%;
+  text-align: center;
+  color: #999;
+}
+
 @media all and (max-width: 915px) {
   // .bubble, .title-card {
   //   margin-bottom: 20px;

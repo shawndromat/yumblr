@@ -25,9 +25,17 @@
           <div class="col-md-8">
             <a href="#recipes/<%= recipe.escape('id') %>">
             <div class="index-card">
-              <img class="recipe-img img-responsive"
-                    src="<%= recipe.escape('photo_url') %>"
-                    alt="<%= recipe.escape('title') %>" />
+              <% if (recipe.escape("photo_url")) { %>
+                <img class="recipe-img img-responsive"
+                      src="<%= recipe.escape('photo_url') %>"
+                      alt="<%= recipe.escape('title') %>" />
+              <% } else { %>
+                <div class="index-placeholder">
+                  <h3>
+                    No photo yet
+                  </h3>
+                </div>
+              <% } %>
             </div>
           </a>
           </div>

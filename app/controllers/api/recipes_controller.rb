@@ -4,7 +4,7 @@ module Api
     before_action :require_owner, only: [:update]
 
     def index
-      @recipes = Recipe.all.sort_by{|recipe| recipe.created_at}.reverse
+      @recipes = Recipe.all.where(private: false).sort_by{|recipe| recipe.created_at}.reverse
       respond_to do |format|
         format.html
         format.json { render jbuilder: @recipes }
@@ -37,6 +37,11 @@ module Api
 
     def search
       @recipes = Recipe.find_by_ingredient(params[:ingredient_name])
+      render "api/recipes/index", locals: {recipes: @recipes}
+    end
+
+    def private_recipes
+      @recipes = Recipe.all.where(private: true)
       render "api/recipes/index", locals: {recipes: @recipes}
     end
 

@@ -5,9 +5,10 @@ window.Yumblr = {
   Routers: {},
   initialize: function() {
     Yumblr.recipes = new Yumblr.Collections.Recipes();
-    Yumblr.recipes.fetch({
+    Yumblr.privateRecipes = new Yumblr.Collections.PrivateRecipes();
+    Yumblr.privateRecipes.fetch({
       success: function () {
-        Yumblr.recipesArray = Yumblr.recipes.toArray();
+        Yumblr.recipesArray = Yumblr.privateRecipes.toArray();
       }
     })
     Yumblr.ingredients = new Yumblr.Collections.Ingredients();

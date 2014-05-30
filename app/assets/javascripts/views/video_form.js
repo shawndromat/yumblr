@@ -2,7 +2,7 @@ window.Yumblr.Views.VideoForm = Backbone.View.extend({
   initialize: function (options) {
     this.parent = options.parent;
   },
-  className: "row",
+  className: "row video-form",
   template: JST["steps/video_form"],
   events: {
     "click .save-item": "submit",
@@ -14,17 +14,30 @@ window.Yumblr.Views.VideoForm = Backbone.View.extend({
     return this;
   },
   submit: function (event) {
-    var video_url = this.$(".video-input").val();
-    var video_id = video_url.split("=")[1];
+    var videoUrl = this.$(".video-input").val();
+    var videoId;
+    if (videoUrl.indexOf("youtube") >= 0) {
+      var splits = videoUrl.split(/\?|&/)
+      var vidSplit = _.find(splits, function (split) {
+        if (split.substr(0, 2) === "v=") {
+          return split
+        }
+      })
+      videoId = vidSplit.split("=")[1];
+    } else if (videoUrl.indexOf("youtu.be") >= 0){
+      videoUrl = videoUrl.substr(videoUrl.indexOf("youtu.be"));
+      videoId = videoUrl.split(/\/|\?/)[1]
+    }
     var view = this;
-    this.model.save({step: {video_url: video_id}},{
+    this.model.set("video_url", videoId);
+    this.model.save({step: {video_url: videoId}},{
       success: function () {
-        view.parent.removeSubview(".video-form", view);
+        view.parent.removeSubview(".video-form-wrapper", view);
       }
     });
   },
   removeForm: function () {
-    this.parent.removeSubview(".video-form", this);
+    this.parent.removeSubview(".video-form-wrapper", this);
     this.parent.render();
   }
 });

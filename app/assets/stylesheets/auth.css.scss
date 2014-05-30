@@ -4,6 +4,10 @@ $text-color: #2C3E50;
   background-color: transparent;
   background-image: image-url("auth2.jpg");
   background-size: cover;
+
+  .alert.alert-warning {
+    margin-top: 150px;
+  }
 }
 
 #auth-body:after {

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   validates :username, :password_digest, :session_token, presence: true
+  validates :username, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }, on: :create
   before_validation :ensure_session_token
 

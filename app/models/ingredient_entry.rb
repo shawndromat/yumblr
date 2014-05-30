@@ -45,11 +45,12 @@ class IngredientEntry < ActiveRecord::Base
       "head",
       "slice",
       "jar",
-      "piece"
+      "piece",
+      "sprig"
     ]
 
   PLURAL_UNITS = ["cup", "pinch", "bunch", "clove", "can", "liter",
-                    "gallon", "pint", "head", "slice", "jar", "piece"]
+                    "gallon", "pint", "head", "slice", "jar", "piece", "sprig"]
 
   FRACTIONS = [
       "",

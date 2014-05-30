@@ -332,6 +332,10 @@ $light-pink: #FFB4F7;
 }
 
 iframe.step-video {
-  width: 520px;
-  height: 330px;
+  width: 480px;
+  height: 300px;
+}
+
+.step-timer, .timer-form, .step-video, .video-form {
+  margin: 10px 0;
 }

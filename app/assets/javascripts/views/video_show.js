@@ -2,6 +2,7 @@ window.Yumblr.Views.VideoShow = Backbone.View.extend({
   initialize: function (options) {
     this.parent = options.parent
   },
+  className: "step-video",
   template: JST["steps/video_show"],
   render: function () {
     var content = this.template({step: this.model});

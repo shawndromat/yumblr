@@ -13,14 +13,17 @@
   <%= render "layouts/header" %>
   <% end %>
 
-  <!-- <%= render "layouts/errors" %>   -->
+  <% if flash[:errors] %>
 
-  <!-- <% if notice || alert %>
-    <div class="row">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div class="alert alert-warning">
+      <ul>
+        <% flash[:errors].each do |error| %>
+        <li><%= error %></li>
+        <% end %>
+      </ul>
     </div>
-  <% end %> -->
+
+  <% end %>
 
 <%= yield %>
 

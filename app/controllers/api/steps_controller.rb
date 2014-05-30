@@ -21,7 +21,6 @@ module Api
       else
         @step.update_attributes(non_owner_step_params)
       end
-
       if @step.save
         render partial: "api/steps/step", locals: { step: @step }
       else

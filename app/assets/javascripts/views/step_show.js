@@ -60,6 +60,17 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
           console.log(response);
         }
       });
+    } else {
+      $.bootstrapGrowl("Step body can't be blank", {
+        ele: this.$(".step-edit-buttons"),
+        type: "info",
+        offset: {from: "top", amount: -80},
+        align: "right",
+        width: 200,
+        delay: 2000,
+        allow_dismiss: true,
+        stackup_spacing: 10
+      });
     }
   },
   removeStep: function () {
@@ -90,12 +101,12 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   },
   addTimerForm: function (event) {
     event.preventDefault();
-    if (this.isEmpty(".timer-form")) {
+    if (this.isEmpty(".timer-form-wrapper")) {
       var timerForm = new Yumblr.Views.TimerForm({
         model: this.model,
         parent: this
       });
-      this.addSubview(".timer-form", timerForm);
+      this.addSubview(".timer-form-wrapper", timerForm);
     }
     this.render();
   },
@@ -111,12 +122,12 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   },
   addVideoForm: function (event) {
     event.preventDefault();
-    if (this.isEmpty(".video-form")) {
+    if (this.isEmpty(".video-form-wrapper")) {
       var videoForm = new Yumblr.Views.VideoForm({
         model: this.model,
         parent: this
       });
-      this.addSubview(".video-form", videoForm)
+      this.addSubview(".video-form-wrapper", videoForm)
     }
     this.render();
   },

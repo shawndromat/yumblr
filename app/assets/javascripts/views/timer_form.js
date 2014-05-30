@@ -2,7 +2,7 @@ window.Yumblr.Views.TimerForm = Backbone.View.extend({
   initialize: function (options) {
     this.parent = options.parent;
   },
-  className: "row",
+  className: "row timer-form",
   template: JST["steps/timer_form"],
   events: {
     "click .submit-timer": "submit",
@@ -20,13 +20,13 @@ window.Yumblr.Views.TimerForm = Backbone.View.extend({
     var view = this;
     this.model.save({step: {timer: time}},{
       success: function () {
-        view.parent.removeSubview(".timer-form", view);
+        view.parent.removeSubview(".timer-form-wrapper", view);
         view.parent.render();
       }
     });
   },
   removeForm: function () {
-    this.parent.removeSubview(".timer-form", this);
+    this.parent.removeSubview(".timer-form-wrapper", this);
     this.parent.render();
   }
 });

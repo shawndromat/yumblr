@@ -1,13 +1,14 @@
-<div class="row">
-  <div class="col-md-9">
-    <input class="form-control video-input" value="<%= step.escape("video_url") %>">
+<div class="col-md-12">
+  <label>Enter a youtube video url:</label>
+</div>
+<div class="col-md-9">
+  <input class="form-control video-input" value="<%= step.escape("video_url") %>">
+</div>
+<div class="col-md-3">
+  <div class="save-item">
+    <span class="glyphicon glyphicon-ok"></span>
   </div>
-  <div class="col-md-3">
-    <div class="save-item">
-      <span class="glyphicon glyphicon-ok"></span>
-    </div>
-    <div class="remove-item">
-      <span class="glyphicon glyphicon-remove"></span>
-    </div>
+  <div class="remove-item">
+    <span class="glyphicon glyphicon-remove"></span>
   </div>
 </div>

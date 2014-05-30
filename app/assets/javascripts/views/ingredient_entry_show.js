@@ -49,6 +49,17 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
           view.triggerForm = false;
         }
       });
+    } else {
+      $.bootstrapGrowl("Ingredient name can't be blank", {
+        ele: this.$el,
+        type: "info",
+        offset: {from: "top", amount: -80},
+        align: "right",
+        width: 200,
+        delay: 2000,
+        allow_dismiss: true,
+        stackup_spacing: 10
+      });
     }
   },
   removeEntry: function () {

@@ -17,8 +17,8 @@
 //= require jquery.plugin.min.js
 //= require jquery.countdown.min.js
 //= require typeahead.js
-//= require jquery.embedly.js
 //= require bootstrap
+//= require jquery.bootstrap-growl.min.js
 //= require underscore
 //= require backbone
 //= require yumblr

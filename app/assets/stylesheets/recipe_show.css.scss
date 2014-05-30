@@ -152,7 +152,7 @@ $light-pink: #FFB4F7;
   margin-right: 8px;
 }
 
-#ingredient-entries, #recipe-steps {
+#ingredient-entries .entry-main, .recipe-show-steps .step-main {
   cursor: move;
 }
 
@@ -173,7 +173,6 @@ $light-pink: #FFB4F7;
 }
 
 #ingredients-wrapper:hover, #steps-wrapper:hover{
-
   .show-add-item {
     visibility: visible;
   }

@@ -11,8 +11,8 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     if (this.model.get("video_url")) {
       this.addVideo();
     }
-
-    this.listenTo(this.model, "change:timer", this.toggleTimerView)
+    this.listenTo(this.model, "change:video_url", this.toggleVideoView);
+    this.listenTo(this.model, "change:timer", this.toggleTimerView);
     this.listenTo(this.model, "sync change:rank", this.render);
   },
   template: JST["steps/step_show"],
@@ -21,8 +21,8 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     "click .edit-button": "editStep",
     "click .save-item": "saveStep",
     "click .remove-step": "removeStep",
-    "click .show-timer": "addTimer",
-    "click .add-timer": "addTimerForm"
+    "click .add-timer": "addTimerForm",
+    "click .add-video": "addVideoForm"
   },
   render: function () {
     $(this.el).attr("data-step-id", this.model.id);
@@ -48,7 +48,7 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
     var attrs = {
       body: this.$(".step-form").val(),
       recipe_id: this.model.recipe.id,
-      rank: this.model.get("rank")
+      rank: this.model.get("rank"),
     }
     var view = this;
     if (attrs.body) {
@@ -101,7 +101,10 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
   },
   addVideo: function () {
     if (this.isEmpty(".step-video-wrapper")) {
-      var videoShow = new Yumblr.Views.VideoShow({model: this.model});
+      var videoShow = new Yumblr.Views.VideoShow({
+        model: this.model,
+        parent: this
+      });
       this.addSubview(".step-video-wrapper", videoShow);
     }
     this.render();
@@ -115,7 +118,22 @@ window.Yumblr.Views.StepShow = Backbone.CompositeView.extend({
       });
       this.addSubview(".video-form", videoForm)
     }
-    this.triggerForm = true;
     this.render();
+  },
+  toggleTimerView: function () {
+    if (this.model.get("timer")) {
+      this.addTimer();
+    } else {
+      this.clearSubviews(".step-timer-wrapper");
+      this.render();
+    }
+  },
+  toggleVideoView: function () {
+    if (this.model.get("video_url")) {
+      this.addVideo();
+    } else {
+      this.clearSubviews(".step-video-wrapper");
+      this.render();
+    }
   },
 })

@@ -18,7 +18,9 @@
     <div class="alert alert-warning">
       <ul>
         <% flash[:errors].each do |error| %>
+        <% unless error = "Only the recipe owner can edit a recipe" %>
         <li><%= error %></li>
+        <% end %>
         <% end %>
       </ul>
     </div>

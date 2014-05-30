@@ -91,6 +91,14 @@ $light-blue: #B4F9FF;
   z-index: 1;
 }
 
+#back-to-top {
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right:30px;
+  display:none;
+}
+
 @media all and (max-width: 915px) {
   // .bubble, .title-card {
   //   margin-bottom: 20px;

@@ -3,7 +3,34 @@
   * {
     height: 100px;
   }
-  input[placeholder], button {
+  input[placeholder], button, pre, .tt-dropdown-menu, .tt-hint {
     font-size: 2em;
   }
+  .tt-input {
+    font-weight: bold;
+  }
+  span.twitter-typeahead {
+    width: 100%;
+  }
+
+
+  .tt-suggestions {
+    .tt-suggestion {
+      height: 60px;
+      background-color: #fff;
+      padding: 0px 20px;
+      div {
+        margin-top: 10px;
+      }
+    }
+
+    .tt-suggestion:last-child {
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+  }
+}
+
+#no-results {
+  text-align: center;
 }

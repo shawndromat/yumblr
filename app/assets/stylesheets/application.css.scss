@@ -48,7 +48,7 @@ body:after {
 
     li {
       position: relative;
-      margin: 0 5px;
+      margin: 10px 5px;
 
       a {
         position: relative;
@@ -60,6 +60,10 @@ body:after {
         -o-transition: top .5s linear;
         transition: top .5s linear;
       }
+    }
+
+    .active a {
+      color: $text-color;
     }
 
     a:hover {

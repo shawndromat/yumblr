@@ -2,8 +2,20 @@
 </div>
 
 <% content_for :user_script do%>
-<script type="text/javascript" charset="utf-8">
-  currentUserId = <%= current_user.try(:id) %>;
-  currentUser = "<%= current_user.try(:username) %>";
-</script>
+  <script type="text/javascript" charset="utf-8">
+    currentUserId = <%= current_user.try(:id) %>;
+    currentUser = "<%= current_user.try(:username) %>";
+  </script>
+<% end %>
+
+<% content_for :navigation do %>
+  <script charset="utf-8">
+  $(function () {
+    $('.navbar-nav').on('click', 'li', function () {
+      console.log(this);
+      $(this).siblings().removeClass("active");
+      $(this).addClass("active");
+    })
+  })
+  </script>
 <% end %>

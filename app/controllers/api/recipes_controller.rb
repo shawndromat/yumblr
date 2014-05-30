@@ -37,13 +37,8 @@ module Api
 
     def search
       @recipes = Recipe.find_by_ingredient(params[:ingredient_name])
-      render jbuilder: @recipes
+      render "api/recipes/index", locals: {recipes: @recipes}
     end
-
-    # def random
-    #   @recipe = Recipe.all.sample
-    #   render partial: "api/recipes/recipe", locals: { recipe: @recipe }
-    # end
 
     private
     def recipe_params

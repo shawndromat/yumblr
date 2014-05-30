@@ -1,9 +1,11 @@
   <div class="recipes-index col-md-10">
 
+      <% if (location.href.indexOf("search") === -1) { %>
       <div id="index-nav" class="btn-group">
               <a href="#" class="btn btn-large btn-info">All Recipes</a>
               <a href="#mycookbook" class="btn btn-large btn-info">My Recipes</a>
             </div>
+      <% } %>
 
       <% recipes.each(function (recipe) { %>
         <div class="row recipe-wrapper">
@@ -33,3 +35,10 @@
 
       <% }) %>
   </div>
+
+  <a id="back-to-top" href="#"
+     class="btn btn-info btn-lg back-to-top"
+     role="button" title="Click to return on the top page"
+     data-toggle="tooltip" data-placement="left">
+       <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>

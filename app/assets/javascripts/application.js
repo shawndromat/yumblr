@@ -16,6 +16,7 @@
 //= require jquery.serializejson.min.js
 //= require jquery.plugin.min.js
 //= require jquery.countdown.min.js
+//= require typeahead.js
 //= require bootstrap
 //= require underscore
 //= require backbone

@@ -19,3 +19,20 @@
   })
   </script>
 <% end %>
+
+<% content_for :tour do %>
+  <script charset="utf-8">
+    var tour = new Shepherd.Tour({
+    defaults: {classes: 'shepherd-theme-arrows'}
+    });
+
+    tour.addStep ('example',{
+      title: 'Example Shepherd',
+      text: 'Creating a Shepherd is easy too! Just create ...',
+      attachTo: '.navbar-header bottom',
+      advanceOn: '.docs-link click'
+    });
+
+    tour.start();
+  </script>
+<% end %>

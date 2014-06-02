@@ -36,11 +36,12 @@ module Api
 
     private
     def owner_step_params
-      params.require(:step).permit(:body, :id, :rank, :recipe_id, :timer, :video_url)
+      params.require(:step).permit(:body, :id, :rank, :recipe_id, :timer,
+                                    :video_url, :video_id)
     end
 
     def non_owner_step_params
-      params.require(:step).permit(:timer, :video_url)
+      params.require(:step).permit(:timer, :video_url, :video_id)
     end
   end
 end

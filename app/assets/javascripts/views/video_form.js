@@ -29,8 +29,10 @@ window.Yumblr.Views.VideoForm = Backbone.View.extend({
       videoId = videoUrl.split(/\/|\?/)[1]
     }
     var view = this;
-    this.model.set("video_url", videoId);
-    this.model.save({step: {video_url: videoId}},{
+    this.model.set("video_url", videoUrl);
+    this.model.set("video_id", videoId)
+
+    this.model.save({step: {video_url: videoUrl, video_id: videoId}},{
       success: function () {
         view.parent.removeSubview(".video-form-wrapper", view);
       }

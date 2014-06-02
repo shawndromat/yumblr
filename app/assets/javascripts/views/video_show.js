@@ -1,6 +1,7 @@
 window.Yumblr.Views.VideoShow = Backbone.View.extend({
   initialize: function (options) {
-    this.parent = options.parent
+    this.parent = options.parent;
+    this.listenTo(this.model, "change:video_url change:video_id", this.render)
   },
   className: "step-video",
   template: JST["steps/video_show"],
@@ -13,7 +14,7 @@ window.Yumblr.Views.VideoShow = Backbone.View.extend({
     "click .remove-item": "deleteVideo"
   },
   deleteVideo: function () {
-    this.model.save({step: {video_url: null}});
+    this.model.save({step: {video_url: null, video_id: null}});
     this.parent.removeSubview(".step-video-wrapper", this)
   }
 })

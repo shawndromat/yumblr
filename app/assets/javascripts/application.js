@@ -19,6 +19,7 @@
 //= require typeahead.js
 //= require bootstrap
 //= require jquery.bootstrap-growl.min.js
+//= require shepherd.min.js
 //= require underscore
 //= require backbone
 //= require yumblr

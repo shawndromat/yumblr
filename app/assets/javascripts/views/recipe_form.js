@@ -19,6 +19,8 @@ window.Yumblr.Views.RecipeForm = Backbone.CompositeView.extend({
   render: function () {
     var content = this.template({recipe: this.model, errors: this.errors});
     this.$el.html(content);
+    this.sortSubviews("#new-ingredient", "rank");
+    this.sortSubviews("#recipe-steps", "rank");
     this.attachSubviews();
     return this;
   },

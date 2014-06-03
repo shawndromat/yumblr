@@ -66,7 +66,6 @@ window.Yumblr.Views.IngredientEntryShow = Backbone.View.extend({
     var view = this;
 
     function success (model) {
-
       view.remove();
       view.parent.saveRanks("#ingredient-entries", ".ingredient-entry")
       view.parent.removeSubview("#ingredient-entries", view);

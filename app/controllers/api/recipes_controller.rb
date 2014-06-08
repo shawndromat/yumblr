@@ -4,7 +4,7 @@ module Api
     before_action :require_owner, only: [:update]
 
     def index
-      @recipes = Recipe.all.where(private: false).sort_by{|recipe| recipe.created_at}.reverse
+      @recipes = Recipe.public.sort_by{|recipe| recipe.created_at}.reverse
       respond_to do |format|
         format.html
         format.json { render jbuilder: @recipes }
@@ -41,7 +41,7 @@ module Api
     end
 
     def private_recipes
-      @recipes = Recipe.all.where(private: true)
+      @recipes = Recipe.private
       render "api/recipes/index", locals: {recipes: @recipes}
     end
 

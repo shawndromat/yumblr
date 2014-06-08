@@ -15,4 +15,4 @@ Technologies
 
 Rails backend RESTful API.
 
-Post-sign-in, Yumblr is a one-pager with Backbone MVC handling AJAX requests back to rails.
+Post-sign-in, Yumblr is a single-page app with Backbone MVC handling AJAX requests back to rails.

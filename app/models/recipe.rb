@@ -24,6 +24,9 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :ingredient_entries,
       reject_if: proc { |attributes| attributes['ingredient_name'].blank? }
 
+  scope :private, -> { where(private: true)}
+  scope :public, -> { where(private: false)}
+
   def self.find_by_ingredient(ingredient_name)
     ingredient = Ingredient.find_by_name(ingredient_name)
     return ingredient.try(:recipes)

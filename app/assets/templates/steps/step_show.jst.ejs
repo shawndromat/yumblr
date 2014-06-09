@@ -17,18 +17,12 @@
 <div class="col-md-3 edit-tab edit-step-tab">
   <% if (currentUserId === parseInt(step.escape("owner_id"))) { %>
     <div class="row">
-      <div type="button" class="edit-step edit-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </div>
+      <button class="control edit-step edit-item"></button>
     </div>
   <% } %>
 
   <div class="row annotation-buttons">
-    <div type="button" class="add-timer">
-      <span class="glyphicon glyphicon-time"></span>
-    </div>
-    <div type="button" class="add-video">
-      <span class="glyphicon glyphicon-facetime-video"></span>
-    </div>
+    <button class="control add-timer"></button>
+    <button class="control add-video"></button>
   </div>
 </div>

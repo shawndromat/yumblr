@@ -18,6 +18,9 @@ $light-blue: #B4F9FF;
 
   .title-card:hover {
     text-decoration: none;
+    .edit-item {
+      visibility: visible;
+    }
   }
 
   .index-card {
@@ -61,6 +64,7 @@ $light-blue: #B4F9FF;
   margin: 0 5%;
   padding: 20px;
   position: relative;
+  overflow: auto;
 
   h4 {
     margin-top: 15px;
@@ -107,9 +111,7 @@ $light-blue: #B4F9FF;
 }
 
 @media all and (max-width: 915px) {
-  // .bubble, .title-card {
-  //   margin-bottom: 20px;
-  // }
+
   .title-card {
     min-height: 60px;
     padding-top: 0px;

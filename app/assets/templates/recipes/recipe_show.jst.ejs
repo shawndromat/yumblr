@@ -6,9 +6,7 @@
         <h4>
           added by you!
         </h4>
-      <div class="edit-title edit-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </div>
+      <button class="control edit-title edit-item"></button>
       <% } else { %>
         <h4>
           added by <%= recipe.escape("owner") %>
@@ -33,9 +31,7 @@
         </div>
       <% } %>
       <% if (currentUserId === parseInt(recipe.escape("owner_id"))) { %>
-      <div class="edit-photo edit-button">
-        <span class="glyphicon glyphicon-pencil"></span>
-      </div>
+      <button class="control edit-photo edit-item"></button>
       <% } %>
     </div>
   </div>

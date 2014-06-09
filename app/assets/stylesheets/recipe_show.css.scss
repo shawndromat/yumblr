@@ -15,28 +15,23 @@ $light-pink: #FFB4F7;
 /*  Header  */
 
 .recipe-header {
+  // .title-card {
+  //   padding-bottom: 40px;
+  // }
 
-  h2 {
-    display: inline-block;
-  }
-
-  .title-card {
-    padding-bottom: 40px;
-  }
-
-  .title-card:hover {
-    .edit-button {
-      visibility: visible;
+    .title-card:hover {
+      .edit-item {
+        visibility: visible;
+      }
     }
-  }
-
-  .edit-button, .save-item {
-    margin: 5px;
-  }
-
-  .edit-button {
-    visibility: hidden;
-  }
+  //
+  // .edit-button, .save-item {
+  //   margin: 5px;
+  // }
+  //
+  // .edit-button {
+  //   visibility: hidden;
+  // }
 
   textarea {
     font-size: 2em;
@@ -56,7 +51,7 @@ $light-pink: #FFB4F7;
     max-height: 500px;
   }
 
-  .edit-button {
+  .edit-item {
     position: absolute;
     left: 10px;
     bottom: 15px;
@@ -84,7 +79,6 @@ $light-pink: #FFB4F7;
 
 #recipe-show-img:hover {
   position: relative;
-
   .edit-button {
     visibility: visible;
   }
@@ -115,41 +109,40 @@ $light-pink: #FFB4F7;
   }
 }
 
-.edit-button {
+.edit-item {
   background-color: $light-blue;
-}
-
-.button.edit-btn:after {
-  content: "\270f";
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  color: $text-color;
-  font-size: 1.5em;
+  visibility: hidden;
+  &:after {
+    content: "\270f";
+  }
 }
 
 .remove-item {
   background-color: $light-red;
-  .glyphicon-trash {
-    left: 6px;
+  &:after {
+    content: "\e020";
   }
 }
 
 .save-item {
   background-color: $light-green;
+  &:after {
+    content: "\e013";
+  }
 }
 
 .add-video {
   background-color: $light-purple;
+  &:after {
+    content: "\e059";
+  }
 }
 
 .add-timer {
   background-color: $light-pink;
-}
-
-.save-item, .remove-item {
-  float: left;
-  margin-right: 8px;
+  &:after {
+    content: "\e023";
+  }
 }
 
 #ingredient-entries .entry-main, .recipe-show-steps .step-main {

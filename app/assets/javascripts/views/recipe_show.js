@@ -19,9 +19,7 @@ window.Yumblr.Views.RecipeShow = Backbone.CompositeView.extend({
   photoTemplate: JST["recipes/photo_form"],
   events: {
     "click .edit-title": "editTitle",
-    "blur .recipe-title": "saveTitle",
-    "click #save-title": "saveTitle",
-    "change .recipe-title": "saveTitle",
+    "click .save-title": "saveTitle",
     "click .add-step": "addStepForm",
     "click .add-entry": "addEntryForm",
     "click .edit-photo": "editPhoto",

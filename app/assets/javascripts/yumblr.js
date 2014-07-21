@@ -91,7 +91,6 @@ Backbone.CompositeView = Backbone.View.extend({
       //skip if subview in question was the one deleted (index === -1)
       if (index >= 0 && (subview.model.get('rank') !== index + 1)) {
         subview.model.set('rank', index + 1);
-        debugger
         if (subview.model.id) {
           subview.model.save({step: {rank: index + 1 }});
         }
